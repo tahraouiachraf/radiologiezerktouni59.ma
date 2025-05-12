@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import './constants';
 import './App.css';
 
 function App() {

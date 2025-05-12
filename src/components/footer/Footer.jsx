@@ -1,7 +1,6 @@
 import { FaPhone, FaMapMarkerAlt, FaClock, FaEnvelope, FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import './Footer.css';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();

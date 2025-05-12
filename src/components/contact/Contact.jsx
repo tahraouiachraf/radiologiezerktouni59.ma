@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { FaPhone, FaMapMarkerAlt, FaClock, FaEnvelope, FaUser, FaCalendarAlt } from 'react-icons/fa';
-import './Contact.css';
 
 const Contact = () => {
     const contactInfo = [
