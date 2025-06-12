@@ -86,10 +86,10 @@ const Footer = () => {
                                 <FaPhone className="footer-contact-icon" />
                                 <span>+212 5228-81111</span>
                             </div>
-                            <div className="footer-contact-item">
-                                <FaEnvelope className="footer-contact-icon" />
+                            {/* <div className="footer-contact-item">
+                                <FaEnvelope className="footer-contact-icon" style={{ fontSize: '2.9rem' }} />
                                 <span>contact@radiologiezerktouni59.ma</span>
-                            </div>
+                            </div> */}
                             <div className="footer-contact-item">
                                 <FaMapMarkerAlt className="footer-contact-icon" />
                                 <span>Résidence les fleurs, 59 Bd Mohammed Zerktouni, Casablanca</span>
