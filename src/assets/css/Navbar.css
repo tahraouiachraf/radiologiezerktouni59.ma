@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #0066cc;
+    --white: #fff;
+    --text-color: #333;
+    --dark-color: #111;
+    --transition: all 0.3s ease-in-out;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 /* Top Bar */
 .top-bar {
     background-color: var(--primary-color);
@@ -10,6 +30,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .top-bar-item {
@@ -52,9 +73,9 @@
 }
 
 .logo h1 {
-    color: var(--dark-color);
     font-size: 1.8rem;
     font-weight: 700;
+    color: var(--dark-color);
 }
 
 .logo h1 span {
@@ -65,6 +86,8 @@
     display: flex;
     gap: 30px;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-links a {
@@ -72,18 +95,19 @@
     font-weight: 600;
     font-size: 1.1rem;
     position: relative;
+    text-decoration: none;
     padding: 5px 0;
 }
 
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -3px;
     left: 0;
     width: 0;
     height: 2px;
     background-color: var(--primary-color);
-    transition: var(--transition);
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
@@ -92,7 +116,7 @@
 
 .mobile-menu-btn {
     display: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
     color: var(--dark-color);
 }
@@ -101,10 +125,6 @@
 @media (max-width: 992px) {
     .top-bar {
         display: none;
-    }
-
-    .main-header {
-        top: 0;
     }
 
     .nav-links {
@@ -144,4 +164,39 @@
     .nav-links {
         padding: 60px 20px;
     }
+}
+
+/* Lien actif */
+.nav-links a.active {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Lien normal avec effet hover */
+.nav-links a {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    padding: 5px 0;
+    text-decoration: none;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
