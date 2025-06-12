@@ -55,12 +55,12 @@
 .footer-contact-item {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 .footer-contact-icon {
     color: var(--secondary-color);
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    margin-right: 10px;
 }
 
 .footer-links {
@@ -172,10 +172,6 @@
 @media (max-width: 576px) {
     .footer-grid {
         grid-template-columns: 1fr;
-    }
-
-    .footer-col {
-        text-align: center;
     }
 
     .footer-col h3::after {
