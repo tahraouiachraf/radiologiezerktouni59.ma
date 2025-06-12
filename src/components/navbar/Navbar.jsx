@@ -7,7 +7,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
-    const location = useLocation(); // pour déterminer la route active
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -30,10 +30,12 @@ const Navbar = () => {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     const navLinks = [
-        { name: 'Accueil', path: '/' },
-        { name: 'À Propos', path: '/about' },
-        { name: 'Services', path: '/services' },
-        { name: 'Contact', path: '/contact' },
+        { name: 'À propos', path: '/about' },
+        { name: 'Départements', path: '/departments' },
+        { name: 'Nos Docteurs', path: '/doctors' },
+        { name: 'Nos Prestations', path: '/services' },
+        { name: 'Prendre rendez-vous', path: '/appointment' },
+        { name: 'Contacts', path: '/contact' },
     ];
 
     return (
@@ -71,7 +73,7 @@ const Navbar = () => {
                             transition={{ duration: 0.5 }}
                         >
                             <Link to="/">
-                                <h1>Radiologie <span>Zerktouni 59</span></h1>
+                                <h1>Radiologie<span> Zerktouni 59</span></h1>
                             </Link>
                         </motion.div>
 
@@ -94,6 +96,7 @@ const Navbar = () => {
                                             >
                                                 {link.name}
                                             </Link>
+                                            <div className="menu-divider"></div>
                                         </motion.li>
                                     );
                                 })}
