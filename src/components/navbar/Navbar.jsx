@@ -1,20 +1,17 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes, FaPhone, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 
-const Header = () => {
+const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
+    const location = useLocation(); // pour déterminer la route active
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
+            setScrolled(window.scrollY > 50);
         };
 
         const handleResize = () => {
@@ -30,9 +27,7 @@ const Header = () => {
         };
     }, []);
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+    const toggleMenu = () => setIsOpen(!isOpen);
 
     const navLinks = [
         { name: 'Accueil', path: '/' },
@@ -82,18 +77,26 @@ const Header = () => {
 
                         <nav className={`nav-links ${isOpen ? 'open' : ''}`}>
                             <ul>
-                                {navLinks.map((link, index) => (
-                                    <motion.li
-                                        key={index}
-                                        initial={{ opacity: 0, y: -20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: index * 0.1 }}
-                                    >
-                                        <Link to={link.path} onClick={() => setIsOpen(false)}>
-                                            {link.name}
-                                        </Link>
-                                    </motion.li>
-                                ))}
+                                {navLinks.map((link, index) => {
+                                    const isActive = location.pathname === link.path;
+
+                                    return (
+                                        <motion.li
+                                            key={index}
+                                            initial={{ opacity: 0, y: -10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: index * 0.1 }}
+                                        >
+                                            <Link
+                                                to={link.path}
+                                                onClick={() => setIsOpen(false)}
+                                                className={isActive ? 'active' : ''}
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </motion.li>
+                                    );
+                                })}
                             </ul>
                         </nav>
 
@@ -107,4 +110,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default Navbar;
