@@ -444,6 +444,7 @@
 @media (max-width: 768px) {
     .professional-hero-title {
         font-size: 2.5rem;
+        padding-top: 25px;
     }
 
     .professional-contact-grid {
