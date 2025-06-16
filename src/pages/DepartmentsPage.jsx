@@ -5,8 +5,26 @@ import { FaClinicMedical, FaUserMd, FaProcedures, FaCalendarAlt, FaXRay, FaHeart
 import { GiBrain } from 'react-icons/gi';
 import { MdPregnantWoman, MdChildFriendly } from 'react-icons/md';
 import HeroBanner from '../components/hero/HeroBanner';
+import { useMediaQuery } from 'react-responsive';
 
 const DepartmentsPage = () => {
+    // Définition des breakpoints
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
+    const isDesktop = useMediaQuery({ minWidth: 1024 });
+
+    // Fonction pour déterminer le nombre de colonnes en fonction de l'écran
+    const getGridCols = () => {
+        if (isMobile) return 1;
+        if (isTablet) return 2;
+        return 3;
+    };
+
+    const getDepartmentGridCols = () => {
+        if (isMobile) return 1;
+        return 2;
+    };
+
     const styles = {
         container: {
             width: '100%',
@@ -15,38 +33,39 @@ const DepartmentsPage = () => {
             padding: '0 15px'
         },
         section: {
-            padding: '4rem 0'
+            padding: isMobile ? '2rem 0' : '4rem 0'
         },
         aboutSection: {
             backgroundColor: '#f7fafc',
-            padding: '4rem 0'
+            padding: isMobile ? '2rem 0' : '4rem 0'
         },
         servicesSection: {
-            padding: '4rem 0'
+            padding: isMobile ? '2rem 0' : '4rem 0'
         },
         ctaSection: {
             backgroundColor: '#3490dc',
             color: '#ffffff',
-            padding: '4rem 0',
+            padding: isMobile ? '2rem 0' : '4rem 0',
             textAlign: 'center'
         },
         equipmentSection: {
             backgroundColor: '#f7fafc',
-            padding: '4rem 0'
+            padding: isMobile ? '2rem 0' : '4rem 0'
         },
         sectionTitle: {
-            fontSize: '2.25rem',
+            fontSize: isMobile ? '1.75rem' : '2.25rem',
             fontWeight: '700',
             color: '#3490dc',
             marginBottom: '1rem',
             textAlign: 'center'
         },
         sectionSubtitle: {
-            fontSize: '1.125rem',
+            fontSize: isMobile ? '1rem' : '1.125rem',
             color: '#718096',
             maxWidth: '800px',
             margin: '0 auto 3rem auto',
-            textAlign: 'center'
+            textAlign: 'center',
+            padding: isMobile ? '0 1rem' : '0'
         },
         divider: {
             width: '6rem',
@@ -56,37 +75,39 @@ const DepartmentsPage = () => {
         },
         featureCard: {
             backgroundColor: '#ffffff',
-            padding: '2rem',
+            padding: isMobile ? '1.5rem' : '2rem',
             borderRadius: '0.5rem',
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
             textAlign: 'center',
-            transition: 'box-shadow 0.3s ease'
+            transition: 'box-shadow 0.3s ease',
+            margin: isMobile ? '0 0.5rem 1rem 0.5rem' : '0'
         },
         featureCardHover: {
             boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)'
         },
         featureIcon: {
-            fontSize: '2.25rem',
+            fontSize: isMobile ? '1.75rem' : '2.25rem',
             color: '#3490dc',
             marginBottom: '1rem'
         },
         featureTitle: {
-            fontSize: '1.25rem',
+            fontSize: isMobile ? '1.1rem' : '1.25rem',
             fontWeight: '600',
             marginBottom: '0.75rem'
         },
         departmentCard: {
             border: '1px solid #e2e8f0',
             borderRadius: '0.5rem',
-            padding: '1.5rem',
+            padding: isMobile ? '1rem' : '1.5rem',
             transition: 'box-shadow 0.3s ease',
-            backgroundColor: '#ffffff'
+            backgroundColor: '#ffffff',
+            margin: isMobile ? '0 0.5rem 1rem 0.5rem' : '0'
         },
         departmentCardHover: {
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
         },
         departmentTitle: {
-            fontSize: '1.5rem',
+            fontSize: isMobile ? '1.25rem' : '1.5rem',
             fontWeight: '600',
             color: '#3490dc',
             marginBottom: '1rem',
@@ -96,11 +117,13 @@ const DepartmentsPage = () => {
         },
         departmentDescription: {
             marginBottom: '1.5rem',
-            color: '#4a5568'
+            color: '#4a5568',
+            fontSize: isMobile ? '0.95rem' : '1rem'
         },
         serviceList: {
             listStyle: 'none',
-            padding: '0'
+            padding: '0',
+            fontSize: isMobile ? '0.9rem' : '1rem'
         },
         serviceListItem: {
             marginBottom: '0.5rem',
@@ -112,18 +135,20 @@ const DepartmentsPage = () => {
             marginRight: '0.5rem'
         },
         ctaIcon: {
-            fontSize: '3rem',
+            fontSize: isMobile ? '2rem' : '3rem',
             marginBottom: '1.5rem'
         },
         ctaTitle: {
-            fontSize: '2.25rem',
+            fontSize: isMobile ? '1.5rem' : '2.25rem',
             fontWeight: '700',
-            marginBottom: '1rem'
+            marginBottom: '1rem',
+            padding: isMobile ? '0 1rem' : '0'
         },
         ctaText: {
-            fontSize: '1.25rem',
+            fontSize: isMobile ? '1rem' : '1.25rem',
             maxWidth: '800px',
-            margin: '0 auto 2rem auto'
+            margin: '0 auto 2rem auto',
+            padding: isMobile ? '0 1rem' : '0'
         },
         ctaButton: {
             display: 'inline-block',
@@ -132,7 +157,7 @@ const DepartmentsPage = () => {
             padding: '0.75rem 2rem',
             borderRadius: '0.5rem',
             fontWeight: '600',
-            fontSize: '1.125rem',
+            fontSize: isMobile ? '1rem' : '1.125rem',
             textDecoration: 'none',
             transition: 'transform 0.3s ease'
         },
@@ -141,7 +166,7 @@ const DepartmentsPage = () => {
         },
         grid: {
             display: 'grid',
-            gap: '2rem'
+            gap: isMobile ? '1rem' : '2rem'
         },
         gridCols1: {
             gridTemplateColumns: 'repeat(1, 1fr)'
@@ -175,7 +200,7 @@ const DepartmentsPage = () => {
         {
             id: 1,
             title: "Radiologie Générale",
-            icon: <FaXRay style={{ color: '#3490dc', fontSize: '1.5rem' }} />,
+            icon: <FaXRay style={{ color: '#3490dc', fontSize: isMobile ? '1.25rem' : '1.5rem' }} />,
             description: "Notre service de radiologie générale utilise des équipements numériques de dernière génération pour des images de haute qualité avec une irradiation minimale.",
             services: [
                 "Radiographie pulmonaire",
@@ -188,7 +213,7 @@ const DepartmentsPage = () => {
         {
             id: 2,
             title: "Échographie",
-            icon: <FaHeartbeat style={{ color: '#3490dc', fontSize: '1.5rem' }} />,
+            icon: <FaHeartbeat style={{ color: '#3490dc', fontSize: isMobile ? '1.25rem' : '1.5rem' }} />,
             description: "L'échographie est une technique d'imagerie non invasive utilisant les ultrasons pour explorer les organes internes.",
             services: [
                 "Échographie abdominale",
@@ -201,7 +226,7 @@ const DepartmentsPage = () => {
         {
             id: 3,
             title: "Ostéo-articulaire",
-            icon: <FaBone style={{ color: '#3490dc', fontSize: '1.5rem' }} />,
+            icon: <FaBone style={{ color: '#3490dc', fontSize: isMobile ? '1.25rem' : '1.5rem' }} />,
             description: "Spécialisé dans l'imagerie des os et des articulations pour diagnostiquer fractures, arthrose et autres pathologies.",
             services: [
                 "Radiographie osseuse",
@@ -214,7 +239,7 @@ const DepartmentsPage = () => {
         {
             id: 4,
             title: "Neurologie",
-            icon: <GiBrain style={{ color: '#3490dc', fontSize: '1.5rem' }} />,
+            icon: <GiBrain style={{ color: '#3490dc', fontSize: isMobile ? '1.25rem' : '1.5rem' }} />,
             description: "Imagerie spécialisée du système nerveux central et périphérique pour le diagnostic des pathologies cérébrales et médullaires.",
             services: [
                 "IRM cérébrale",
@@ -227,7 +252,7 @@ const DepartmentsPage = () => {
         {
             id: 5,
             title: "Femme et Enfant",
-            icon: <MdPregnantWoman style={{ color: '#3490dc', fontSize: '1.5rem' }} />,
+            icon: <MdPregnantWoman style={{ color: '#3490dc', fontSize: isMobile ? '1.25rem' : '1.5rem' }} />,
             description: "Services d'imagerie adaptés aux besoins spécifiques des femmes et des enfants avec des protocoles adaptés.",
             services: [
                 "Mammographie numérique",
@@ -240,7 +265,7 @@ const DepartmentsPage = () => {
         {
             id: 6,
             title: "Pédiatrie",
-            icon: <MdChildFriendly style={{ color: '#3490dc', fontSize: '1.5rem' }} />,
+            icon: <MdChildFriendly style={{ color: '#3490dc', fontSize: isMobile ? '1.25rem' : '1.5rem' }} />,
             description: "Un environnement adapté aux enfants avec des techniques spécifiques pour réduire l'irradiation et le stress.",
             services: [
                 "Radiographie pédiatrique",
@@ -282,7 +307,7 @@ const DepartmentsPage = () => {
                             </p>
                         </motion.div>
 
-                        <div style={{ ...styles.grid, ...styles.gridCols3 }}>
+                        <div style={{ ...styles.grid, ...(getGridCols() === 1 ? styles.gridCols1 : getGridCols() === 2 ? styles.gridCols2 : styles.gridCols3) }}>
                             {[
                                 {
                                     icon: <FaClinicMedical style={styles.featureIcon} />,
@@ -336,7 +361,7 @@ const DepartmentsPage = () => {
                             </p>
                         </motion.div>
 
-                        <div style={{ ...styles.grid, ...styles.gridCols2 }}>
+                        <div style={{ ...styles.grid, ...(getDepartmentGridCols() === 1 ? styles.gridCols1 : styles.gridCols2) }}>
                             {departments.map((department, index) => (
                                 <motion.div
                                     key={department.id}
@@ -352,7 +377,7 @@ const DepartmentsPage = () => {
                                         {department.title}
                                     </h3>
                                     <p style={styles.departmentDescription}>{department.description}</p>
-                                    <h4 style={{ fontWeight: '600', marginBottom: '0.75rem' }}>Examens proposés :</h4>
+                                    <h4 style={{ fontWeight: '600', marginBottom: '0.75rem', fontSize: isMobile ? '1rem' : '1.125rem' }}>Examens proposés :</h4>
                                     <ul style={styles.serviceList}>
                                         {department.services.map((service, i) => (
                                             <li key={i} style={styles.serviceListItem}>
