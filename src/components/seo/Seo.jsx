@@ -6,7 +6,7 @@ const Seo = ({ title }) => {
         document.title = title ? `${baseTitle} - ${title}` : baseTitle;
     }, [title]);
 
-    return null; // Pas besoin de JSX ici
+    return null;
 };
 
 export default Seo;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Seo from '../components/seo/Seo';
 import Hero from '../components/hero/Hero';
+import { radiologue } from '../constants';
 import { motion } from 'framer-motion';
 import { FaClinicMedical, FaUserMd, FaProcedures, FaCalendarAlt } from 'react-icons/fa';
 
@@ -359,7 +360,7 @@ const HomePage = () => {
                                 viewport={{ once: true }}
                             >
                                 <img
-                                    src="/assets/images/mri-machine.jpg"
+                                    src={radiologue}
                                     alt="Appareil IRM"
                                     style={styles.equipmentImage}
                                 />

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { radiologue } from '../../constants';
 import { FaArrowRight } from 'react-icons/fa';
 
 const Hero = () => {
@@ -6,7 +7,7 @@ const Hero = () => {
         <>
             <style jsx>{`
                 .hero-section {
-                    padding: 150px 0 100px;
+                    padding: 120px 0 80px;
                     background: linear-gradient(135deg, var(--light-color) 0%, var(--white) 100%);
                     position: relative;
                     overflow: hidden;
@@ -15,7 +16,7 @@ const Hero = () => {
                 .hero-content {
                     display: flex;
                     align-items: center;
-                    gap: 50px;
+                    gap: 40px;
                 }
 
                 .hero-text {
@@ -23,23 +24,23 @@ const Hero = () => {
                 }
 
                 .hero-text h1 {
-                    font-size: 3.5rem;
+                    font-size: 2.8rem;
                     color: var(--dark-color);
                     margin-bottom: 20px;
                     line-height: 1.2;
                 }
 
                 .hero-text .subtitle {
-                    font-size: 1.2rem;
+                    font-size: 1.1rem;
                     color: var(--text-color);
                     margin-bottom: 30px;
-                    max-width: 600px;
+                    max-width: 500px;
                 }
 
                 .hero-buttons {
                     display: flex;
                     gap: 20px;
-                    margin-top: 40px;
+                    margin-top: 30px;
                 }
 
                 .hero-buttons .btn {
@@ -51,13 +52,17 @@ const Hero = () => {
                 .hero-image {
                     flex: 1;
                     position: relative;
+                    display: flex;
+                    justify-content: center;
                 }
 
                 .hero-image img {
-                    width: 100%;
-                    max-width: 600px;
+                    width: 70%;
+                    max-width: 450px;
+                    height: auto;
                     border-radius: 10px;
-                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+                    object-fit: cover;
                 }
 
                 @media (max-width: 992px) {
@@ -67,7 +72,12 @@ const Hero = () => {
                     }
 
                     .hero-text h1 {
-                        font-size: 2.5rem;
+                        font-size: 2.3rem;
+                    }
+
+                    .hero-text .subtitle {
+                        margin-left: auto;
+                        margin-right: auto;
                     }
 
                     .hero-buttons {
@@ -75,22 +85,32 @@ const Hero = () => {
                     }
 
                     .hero-image {
-                        margin-top: 50px;
+                        margin-top: 40px;
+                    }
+
+                    .hero-image img {
+                        width: 70%;
+                        max-width: 400px;
                     }
                 }
 
                 @media (max-width: 576px) {
                     .hero-section {
-                        padding: 120px 0 80px;
+                        padding: 100px 0 60px;
                     }
 
                     .hero-text h1 {
-                        font-size: 2rem;
+                        font-size: 1.8rem;
                     }
 
                     .hero-buttons {
                         flex-direction: column;
                         gap: 15px;
+                    }
+
+                    .hero-image img {
+                        width: 90%;
+                        max-width: 350px;
                     }
                 }
             `}</style>
@@ -134,7 +154,7 @@ const Hero = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            <img src="/assets/images/hero-image.jpg" alt="Radiologie" />
+                            <img src={radiologue} alt="Radiologie" />
                         </motion.div>
                     </div>
                 </div>
