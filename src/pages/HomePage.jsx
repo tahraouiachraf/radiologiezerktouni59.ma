@@ -4,49 +4,76 @@ import Hero from '../components/hero/Hero';
 import { radiologue } from '../constants';
 import { motion } from 'framer-motion';
 import { FaClinicMedical, FaUserMd, FaProcedures, FaCalendarAlt } from 'react-icons/fa';
+import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
-    // Styles CSS en objets JavaScript
+    // Définition des breakpoints
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
+    const isDesktop = useMediaQuery({ minWidth: 1024 });
+
+    // Fonction pour déterminer le nombre de colonnes en fonction de l'écran
+    const getGridCols = () => {
+        if (isMobile) return 1;
+        if (isTablet) return 2;
+        return 3;
+    };
+
+    const getServicesGridCols = () => {
+        if (isMobile) return 1;
+        if (isTablet) return 2;
+        return 3;
+    };
+
+    const getEquipmentGridCols = () => {
+        if (isMobile) return 1;
+        return 2;
+    };
+
+    // Styles CSS en objets JavaScript avec valeurs responsives
     const styles = {
         container: {
             width: '100%',
             maxWidth: '1200px',
             margin: '0 auto',
-            padding: '0 15px'
+            padding: isMobile ? '0 1rem' : '0 15px'
         },
         section: {
-            padding: '4rem 0'
+            padding: isMobile ? '2rem 0' : '4rem 0'
         },
         aboutSection: {
             backgroundColor: '#f7fafc',
-            padding: '4rem 0'
+            padding: isMobile ? '2rem 0' : '4rem 0'
         },
         servicesSection: {
-            padding: '4rem 0'
+            padding: isMobile ? '2rem 0' : '4rem 0'
         },
         ctaSection: {
             backgroundColor: '#3490dc',
             color: '#ffffff',
-            padding: '4rem 0',
+            padding: isMobile ? '2rem 0' : '4rem 0',
             textAlign: 'center'
         },
         equipmentSection: {
             backgroundColor: '#f7fafc',
-            padding: '4rem 0'
+            padding: isMobile ? '2rem 0' : '4rem 0'
         },
         sectionTitle: {
-            fontSize: '2.25rem',
+            fontSize: isMobile ? '1.75rem' : '2.25rem',
             fontWeight: '700',
             color: '#3490dc',
             marginBottom: '1rem',
-            textAlign: 'center'
+            textAlign: 'center',
+            padding: isMobile ? '0 1rem' : '0'
         },
         sectionSubtitle: {
-            fontSize: '1.125rem',
+            fontSize: isMobile ? '1rem' : '1.125rem',
             color: '#718096',
             maxWidth: '800px',
             margin: '0 auto 3rem auto',
-            textAlign: 'center'
+            textAlign: 'center',
+            padding: isMobile ? '0 1rem' : '0'
         },
         divider: {
             width: '6rem',
@@ -56,43 +83,47 @@ const HomePage = () => {
         },
         featureCard: {
             backgroundColor: '#ffffff',
-            padding: '2rem',
+            padding: isMobile ? '1.5rem' : '2rem',
             borderRadius: '0.5rem',
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
             textAlign: 'center',
-            transition: 'box-shadow 0.3s ease'
+            transition: 'box-shadow 0.3s ease',
+            margin: isMobile ? '0 0.5rem 1rem 0.5rem' : '0'
         },
         featureCardHover: {
             boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)'
         },
         featureIcon: {
-            fontSize: '2.25rem',
+            fontSize: isMobile ? '1.75rem' : '2.25rem',
             color: '#3490dc',
             marginBottom: '1rem'
         },
         featureTitle: {
-            fontSize: '1.25rem',
+            fontSize: isMobile ? '1.1rem' : '1.25rem',
             fontWeight: '600',
             marginBottom: '0.75rem'
         },
         serviceCard: {
             border: '1px solid #e2e8f0',
             borderRadius: '0.5rem',
-            padding: '1.5rem',
-            transition: 'box-shadow 0.3s ease'
+            padding: isMobile ? '1rem' : '1.5rem',
+            transition: 'box-shadow 0.3s ease',
+            backgroundColor: '#ffffff',
+            margin: isMobile ? '0 0.5rem 1rem 0.5rem' : '0'
         },
         serviceCardHover: {
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
         },
         serviceTitle: {
-            fontSize: '1.25rem',
+            fontSize: isMobile ? '1.1rem' : '1.25rem',
             fontWeight: '600',
             color: '#3490dc',
             marginBottom: '1rem'
         },
         serviceList: {
             listStyle: 'none',
-            padding: '0'
+            padding: '0',
+            fontSize: isMobile ? '0.9rem' : '1rem'
         },
         serviceListItem: {
             marginBottom: '0.5rem',
@@ -104,18 +135,20 @@ const HomePage = () => {
             marginRight: '0.5rem'
         },
         ctaIcon: {
-            fontSize: '3rem',
+            fontSize: isMobile ? '2rem' : '3rem',
             marginBottom: '1.5rem'
         },
         ctaTitle: {
-            fontSize: '2.25rem',
+            fontSize: isMobile ? '1.5rem' : '2.25rem',
             fontWeight: '700',
-            marginBottom: '1rem'
+            marginBottom: '1rem',
+            padding: isMobile ? '0 1rem' : '0'
         },
         ctaText: {
-            fontSize: '1.25rem',
+            fontSize: isMobile ? '1rem' : '1.25rem',
             maxWidth: '800px',
-            margin: '0 auto 2rem auto'
+            margin: '0 auto 2rem auto',
+            padding: isMobile ? '0 1rem' : '0'
         },
         ctaButton: {
             display: 'inline-block',
@@ -124,7 +157,7 @@ const HomePage = () => {
             padding: '0.75rem 2rem',
             borderRadius: '0.5rem',
             fontWeight: '600',
-            fontSize: '1.125rem',
+            fontSize: isMobile ? '1rem' : '1.125rem',
             textDecoration: 'none',
             transition: 'transform 0.3s ease'
         },
@@ -137,19 +170,21 @@ const HomePage = () => {
             width: '100%',
             maxWidth: '600px',
             display: 'block',
-            margin: '0 auto'
+            margin: '0 auto',
+            marginBottom: isMobile ? '1.5rem' : '0'
         },
         equipmentDescription: {
-            marginBottom: '1.5rem'
+            marginBottom: '1.5rem',
+            fontSize: isMobile ? '0.95rem' : '1rem'
         },
         equipmentTitle: {
-            fontSize: '1.25rem',
+            fontSize: isMobile ? '1.1rem' : '1.25rem',
             fontWeight: '600',
             marginBottom: '0.5rem'
         },
         grid: {
             display: 'grid',
-            gap: '2rem'
+            gap: isMobile ? '1rem' : '2rem'
         },
         gridCols1: {
             gridTemplateColumns: 'repeat(1, 1fr)'
@@ -203,7 +238,7 @@ const HomePage = () => {
                             </p>
                         </motion.div>
 
-                        <div style={{ ...styles.grid, ...styles.gridCols3 }}>
+                        <div style={{ ...styles.grid, ...(getGridCols() === 1 ? styles.gridCols1 : getGridCols() === 2 ? styles.gridCols2 : styles.gridCols3) }}>
                             {[
                                 {
                                     icon: <FaClinicMedical style={styles.featureIcon} />,
@@ -257,7 +292,7 @@ const HomePage = () => {
                             </p>
                         </motion.div>
 
-                        <div style={{ ...styles.grid, ...styles.gridCols2, ...styles.gridCols3 }}>
+                        <div style={{ ...styles.grid, ...(getServicesGridCols() === 1 ? styles.gridCols1 : getServicesGridCols() === 2 ? styles.gridCols2 : styles.gridCols3) }}>
                             {[
                                 {
                                     title: "Radiologie Numérique",
@@ -323,14 +358,15 @@ const HomePage = () => {
                                 Notre secrétariat est à votre disposition du lundi au vendredi de 8h à 19h
                                 et le samedi de 9h à 13h pour convenir d'un rendez-vous.
                             </p>
-                            <motion.a
-                                href="#contact"
-                                style={styles.ctaButton}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                Contactez-nous
-                            </motion.a>
+                            <Link to="/contact">
+                                <motion.button
+                                    style={styles.ctaButton}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    Contactez-nous
+                                </motion.button>
+                            </Link>
                         </motion.div>
                     </div>
                 </section>
@@ -352,48 +388,96 @@ const HomePage = () => {
                             </p>
                         </motion.div>
 
-                        <div style={{ ...styles.grid, ...styles.gridCols2, alignItems: 'center' }}>
-                            <motion.div
-                                initial={{ opacity: 0, x: -50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.6 }}
-                                viewport={{ once: true }}
-                            >
-                                <img
-                                    src={radiologue}
-                                    alt="Appareil IRM"
-                                    style={styles.equipmentImage}
-                                />
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0, x: 50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.6 }}
-                                viewport={{ once: true }}
-                                style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
-                            >
-                                <div>
-                                    <h3 style={styles.equipmentTitle}>IRM 1.5 Tesla</h3>
-                                    <p>
-                                        Notre appareil d'IRM haute définition permet des examens précis avec un confort
-                                        optimal pour le patient et des temps d'acquisition réduits.
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 style={styles.equipmentTitle}>Scanner 64 barrettes</h3>
-                                    <p>
-                                        Scanner multidetecteur permettant des acquisitions rapides avec une irradiation
-                                        réduite et une excellente résolution spatiale.
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 style={styles.equipmentTitle}>Échographes haute résolution</h3>
-                                    <p>
-                                        Des échographes de dernière génération avec doppler couleur et 3D/4D pour
-                                        une imagerie de qualité.
-                                    </p>
-                                </div>
-                            </motion.div>
+                        <div style={{ ...styles.grid, ...(getEquipmentGridCols() === 1 ? styles.gridCols1 : styles.gridCols2), alignItems: 'center' }}>
+                            {isMobile ? (
+                                <>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.6 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <img
+                                            src={radiologue}
+                                            alt="Appareil IRM"
+                                            style={styles.equipmentImage}
+                                        />
+                                    </motion.div>
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.6 }}
+                                        viewport={{ once: true }}
+                                        style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+                                    >
+                                        <div>
+                                            <h3 style={styles.equipmentTitle}>IRM 1.5 Tesla</h3>
+                                            <p style={styles.equipmentDescription}>
+                                                Notre appareil d'IRM haute définition permet des examens précis avec un confort
+                                                optimal pour le patient et des temps d'acquisition réduits.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <h3 style={styles.equipmentTitle}>Scanner 64 barrettes</h3>
+                                            <p style={styles.equipmentDescription}>
+                                                Scanner multidetecteur permettant des acquisitions rapides avec une irradiation
+                                                réduite et une excellente résolution spatiale.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <h3 style={styles.equipmentTitle}>Échographes haute résolution</h3>
+                                            <p style={styles.equipmentDescription}>
+                                                Des échographes de dernière génération avec doppler couleur et 3D/4D pour
+                                                une imagerie de qualité.
+                                            </p>
+                                        </div>
+                                    </motion.div>
+                                </>
+                            ) : (
+                                <>
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -50 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.6 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <img
+                                            src={radiologue}
+                                            alt="Appareil IRM"
+                                            style={styles.equipmentImage}
+                                        />
+                                    </motion.div>
+                                    <motion.div
+                                        initial={{ opacity: 0, x: 50 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.6 }}
+                                        viewport={{ once: true }}
+                                        style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+                                    >
+                                        <div>
+                                            <h3 style={styles.equipmentTitle}>IRM 1.5 Tesla</h3>
+                                            <p style={styles.equipmentDescription}>
+                                                Notre appareil d'IRM haute définition permet des examens précis avec un confort
+                                                optimal pour le patient et des temps d'acquisition réduits.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <h3 style={styles.equipmentTitle}>Scanner 64 barrettes</h3>
+                                            <p style={styles.equipmentDescription}>
+                                                Scanner multidetecteur permettant des acquisitions rapides avec une irradiation
+                                                réduite et une excellente résolution spatiale.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <h3 style={styles.equipmentTitle}>Échographes haute résolution</h3>
+                                            <p style={styles.equipmentDescription}>
+                                                Des échographes de dernière génération avec doppler couleur et 3D/4D pour
+                                                une imagerie de qualité.
+                                            </p>
+                                        </div>
+                                    </motion.div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </section>
