@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { radiologue } from '../constants';
+import Seo from '../components/seo/Seo';
 
-const About = () => {
+const AboutPage = () => {
     return (
         <>
+            <Seo title="À propos - Radiologie Zerktouni 59" />
             <section className="professional-hero-section">
                 <div className="professional-container">
                     <motion.div
@@ -102,4 +104,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default AboutPage;
