@@ -123,3 +123,57 @@ a:hover {
 .delay-3 {
     animation-delay: 0.6s;
 }
+
+
+
+
+/* Responsive Styles AppointmentPage */
+/* Styles pour tablettes (min-width: 768px) */
+@media (min-width: 768px) {
+    .appointment-section {
+        padding: 3rem 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+}
+
+/* Styles pour ordinateurs (min-width: 992px) */
+@media (min-width: 992px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .preparation-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Styles pour grands écrans (min-width: 1200px) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+/* Améliorations spécifiques pour les petits écrans */
+@media (max-width: 480px) {
+    .card {
+        padding: 1rem;
+    }
+    
+    .form-input, .form-select, .form-textarea {
+        font-size: 0.875rem;
+        padding: 0.5rem;
+    }
+    
+    .submit-button {
+        width: 100%;
+    }
+}

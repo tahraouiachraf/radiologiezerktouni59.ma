@@ -5,7 +5,6 @@ import { FaPhone, FaCalendarAlt, FaMapMarkerAlt, FaClock, FaInfoCircle } from 'r
 import HeroBanner from '../components/hero/HeroBanner';
 
 const AppointmentPage = () => {
-    // Styles CSS en objets JavaScript
     const styles = {
         container: {
             width: '100%',
@@ -14,21 +13,32 @@ const AppointmentPage = () => {
             padding: '0 15px'
         },
         section: {
-            padding: '4rem 0'
+            padding: '2rem 0',
+            '@media (min-width: 768px)': {
+                padding: '4rem 0'
+            }
         },
         sectionTitle: {
-            fontSize: '2.25rem',
+            fontSize: '1.75rem',
             fontWeight: '700',
             color: '#3490dc',
             marginBottom: '1rem',
-            textAlign: 'center'
+            textAlign: 'center',
+            '@media (min-width: 768px)': {
+                fontSize: '2.25rem'
+            }
         },
         sectionSubtitle: {
-            fontSize: '1.125rem',
+            fontSize: '1rem',
             color: '#718096',
             maxWidth: '800px',
-            margin: '0 auto 3rem auto',
-            textAlign: 'center'
+            margin: '0 auto 2rem auto',
+            textAlign: 'center',
+            padding: '0 1rem',
+            '@media (min-width: 768px)': {
+                fontSize: '1.125rem',
+                marginBottom: '3rem'
+            }
         },
         divider: {
             width: '6rem',
@@ -40,16 +50,24 @@ const AppointmentPage = () => {
             backgroundColor: '#ffffff',
             borderRadius: '0.5rem',
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-            padding: '2rem',
-            marginBottom: '2rem'
+            padding: '1.5rem',
+            marginBottom: '1.5rem',
+            '@media (min-width: 768px)': {
+                padding: '2rem',
+                marginBottom: '2rem'
+            }
         },
         cardTitle: {
-            fontSize: '1.5rem',
+            fontSize: '1.25rem',
             fontWeight: '600',
             color: '#2d3748',
-            marginBottom: '1.5rem',
+            marginBottom: '1rem',
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            '@media (min-width: 768px)': {
+                fontSize: '1.5rem',
+                marginBottom: '1.5rem'
+            }
         },
         cardIcon: {
             marginRight: '0.75rem',
@@ -59,53 +77,68 @@ const AppointmentPage = () => {
             backgroundColor: '#f7fafc',
             borderLeft: '4px solid #3490dc',
             padding: '1rem',
-            marginBottom: '1.5rem',
-            display: 'flex'
+            marginBottom: '1rem',
+            display: 'flex',
+            '@media (min-width: 768px)': {
+                marginBottom: '1.5rem'
+            }
         },
         infoIcon: {
             color: '#3490dc',
             marginRight: '0.75rem',
-            fontSize: '1.25rem'
+            fontSize: '1.25rem',
+            flexShrink: 0
         },
         formGroup: {
-            marginBottom: '1.5rem'
+            marginBottom: '1rem',
+            '@media (min-width: 768px)': {
+                marginBottom: '1.5rem'
+            }
         },
         formLabel: {
             display: 'block',
-            fontSize: '1rem',
+            fontSize: '0.875rem',
             fontWeight: '600',
             color: '#4a5568',
-            marginBottom: '0.5rem'
+            marginBottom: '0.5rem',
+            '@media (min-width: 768px)': {
+                fontSize: '1rem'
+            }
         },
         formInput: {
             width: '100%',
             padding: '0.75rem',
             border: '1px solid #e2e8f0',
             borderRadius: '0.375rem',
-            fontSize: '1rem',
-            transition: 'border-color 0.2s ease'
-        },
-        formInputFocus: {
-            borderColor: '#3490dc',
-            outline: 'none'
+            fontSize: '0.875rem',
+            transition: 'border-color 0.2s ease',
+            '@media (min-width: 768px)': {
+                fontSize: '1rem'
+            }
         },
         formSelect: {
             width: '100%',
             padding: '0.75rem',
             border: '1px solid #e2e8f0',
             borderRadius: '0.375rem',
-            fontSize: '1rem',
+            fontSize: '0.875rem',
             backgroundColor: '#ffffff',
-            transition: 'border-color 0.2s ease'
+            transition: 'border-color 0.2s ease',
+            '@media (min-width: 768px)': {
+                fontSize: '1rem'
+            }
         },
         formTextarea: {
             width: '100%',
             padding: '0.75rem',
             border: '1px solid #e2e8f0',
             borderRadius: '0.375rem',
-            fontSize: '1rem',
+            fontSize: '0.875rem',
             minHeight: '120px',
-            transition: 'border-color 0.2s ease'
+            transition: 'border-color 0.2s ease',
+            '@media (min-width: 768px)': {
+                fontSize: '1rem'
+            }
         },
         submitButton: {
             backgroundColor: '#3490dc',
@@ -116,30 +149,45 @@ const AppointmentPage = () => {
             fontWeight: '600',
             border: 'none',
             cursor: 'pointer',
-            transition: 'background-color 0.2s ease'
-        },
-        submitButtonHover: {
-            backgroundColor: '#2779bd'
+            transition: 'background-color 0.2s ease',
+            width: '100%',
+            '@media (min-width: 768px)': {
+                width: 'auto'
+            }
         },
         contactItem: {
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'flex-start',
             marginBottom: '1rem',
-            color: '#4a5568'
+            color: '#4a5568',
+            fontSize: '0.875rem',
+            '@media (min-width: 768px)': {
+                fontSize: '1rem'
+            }
         },
         contactIcon: {
             marginRight: '0.75rem',
-            color: '#3490dc'
+            color: '#3490dc',
+            flexShrink: 0,
+            marginTop: '0.25rem'
         },
         grid: {
             display: 'grid',
-            gap: '2rem'
+            gap: '1.5rem',
+            gridTemplateColumns: 'repeat(1, 1fr)',
+            '@media (min-width: 992px)': {
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '2rem'
+            }
         },
-        gridCols1: {
-            gridTemplateColumns: 'repeat(1, 1fr)'
-        },
-        gridCols2: {
-            gridTemplateColumns: 'repeat(2, 1fr)'
+        preparationGrid: {
+            display: 'grid',
+            gap: '1.5rem',
+            gridTemplateColumns: 'repeat(1, 1fr)',
+            '@media (min-width: 768px)': {
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '2rem'
+            }
         },
         textCenter: {
             textAlign: 'center'
@@ -152,73 +200,85 @@ const AppointmentPage = () => {
         mb12: { marginBottom: '3rem' }
     };
 
+    // Fonction pour gérer les styles responsives
+    const getResponsiveStyle = (styleObj) => {
+        return {
+            ...Object.entries(styleObj).reduce((acc, [key, value]) => {
+                if (key.startsWith('@media')) return acc;
+                acc[key] = value;
+                return acc;
+            }, {}),
+            ...(styleObj['@media (min-width: 768px)'] || {})
+        };
+    };
+
     return (
         <>
             <Seo title="Prendre Rendez-vous - Centre de Radiologie" />
+            {/* Hero Section */}
+            <HeroBanner
+                title="Prendre Rendez-vous"
+                subtitle=""
+                badge="Réservez votre examen en ligne ou par téléphone. Notre équipe est à votre disposition pour vous conseiller."
+            />
             <div style={{ overflow: 'hidden' }}>
                 {/* Section Prendre Rendez-vous */}
-                <section style={styles.section}>
-                    {/* Hero Section */}
-                    <HeroBanner
-                        title="Prendre Rendez-vous"
-                        subtitle=""
-                        badge="Réservez votre examen en ligne ou par téléphone. Notre équipe est à votre disposition pour vous conseiller."
-                    />
+                <section style={getResponsiveStyle(styles.section)}>
                     <div style={styles.container}>
-                        <div style={{ ...styles.grid, ...styles.gridCols2 }}>
+                        <div style={getResponsiveStyle(styles.grid)}>
                             {/* Formulaire de RDV */}
                             <motion.div
                                 initial={{ opacity: 0, x: -50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.6 }}
                                 viewport={{ once: true }}
-                                style={styles.card}
+                                style={getResponsiveStyle(styles.card)}
                             >
-                                <h3 style={styles.cardTitle}>
+                                <h3 style={getResponsiveStyle(styles.cardTitle)}>
                                     <FaCalendarAlt style={styles.cardIcon} />
                                     Formulaire de rendez-vous
                                 </h3>
 
-                                <div style={styles.infoBox}>
+                                <div style={getResponsiveStyle(styles.infoBox)}>
                                     <FaInfoCircle style={styles.infoIcon} />
                                     <div>
                                         <p style={{ margin: 0, fontWeight: '600' }}>Informations importantes</p>
-                                        <p style={{ margin: '0.5rem 0 0 0' }}>
+                                        <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.875rem' }}>
                                             Pour les examens nécessitant une préparation particulière, merci de nous contacter par téléphone.
                                         </p>
                                     </div>
                                 </div>
 
                                 <form>
-                                    <div style={styles.formGroup}>
-                                        <label style={styles.formLabel}>Nom complet *</label>
+                                    <div style={getResponsiveStyle(styles.formGroup)}>
+                                        <label style={getResponsiveStyle(styles.formLabel)}>Nom complet *</label>
                                         <input
                                             type="text"
-                                            style={styles.formInput}
+                                            style={getResponsiveStyle(styles.formInput)}
                                             required
                                         />
                                     </div>
 
-                                    <div style={styles.formGroup}>
-                                        <label style={styles.formLabel}>Téléphone *</label>
+                                    <div style={getResponsiveStyle(styles.formGroup)}>
+                                        <label style={getResponsiveStyle(styles.formLabel)}>Téléphone *</label>
                                         <input
                                             type="tel"
-                                            style={styles.formInput}
+                                            style={getResponsiveStyle(styles.formInput)}
                                             required
                                         />
                                     </div>
 
-                                    <div style={styles.formGroup}>
-                                        <label style={styles.formLabel}>Email</label>
+                                    <div style={getResponsiveStyle(styles.formGroup)}>
+                                        <label style={getResponsiveStyle(styles.formLabel)}>Email</label>
                                         <input
                                             type="email"
-                                            style={styles.formInput}
+                                            style={getResponsiveStyle(styles.formInput)}
                                         />
                                     </div>
 
-                                    <div style={styles.formGroup}>
-                                        <label style={styles.formLabel}>Type d'examen *</label>
-                                        <select style={styles.formSelect} required>
+                                    <div style={getResponsiveStyle(styles.formGroup)}>
+                                        <label style={getResponsiveStyle(styles.formLabel)}>Type d'examen *</label>
+                                        <select style={getResponsiveStyle(styles.formSelect)} required>
                                             <option value="">Sélectionnez un examen</option>
                                             <option value="radiologie">Radiologie standard</option>
                                             <option value="echographie">Échographie</option>
@@ -229,26 +289,26 @@ const AppointmentPage = () => {
                                         </select>
                                     </div>
 
-                                    <div style={styles.formGroup}>
-                                        <label style={styles.formLabel}>Date souhaitée *</label>
+                                    <div style={getResponsiveStyle(styles.formGroup)}>
+                                        <label style={getResponsiveStyle(styles.formLabel)}>Date souhaitée *</label>
                                         <input
                                             type="date"
-                                            style={styles.formInput}
+                                            style={getResponsiveStyle(styles.formInput)}
                                             required
                                         />
                                     </div>
 
-                                    <div style={styles.formGroup}>
-                                        <label style={styles.formLabel}>Message</label>
+                                    <div style={getResponsiveStyle(styles.formGroup)}>
+                                        <label style={getResponsiveStyle(styles.formLabel)}>Message</label>
                                         <textarea
-                                            style={styles.formTextarea}
+                                            style={getResponsiveStyle(styles.formTextarea)}
                                             placeholder="Précisez vos besoins ou contraintes particulières..."
                                         ></textarea>
                                     </div>
 
                                     <motion.button
                                         type="submit"
-                                        style={styles.submitButton}
+                                        style={getResponsiveStyle(styles.submitButton)}
                                         whileHover={{ backgroundColor: '#2779bd' }}
                                         whileTap={{ scale: 0.98 }}
                                     >
@@ -263,15 +323,15 @@ const AppointmentPage = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.6 }}
                                 viewport={{ once: true }}
-                                style={styles.card}
+                                style={getResponsiveStyle(styles.card)}
                             >
-                                <h3 style={styles.cardTitle}>
+                                <h3 style={getResponsiveStyle(styles.cardTitle)}>
                                     <FaPhone style={styles.cardIcon} />
                                     Nous contacter
                                 </h3>
 
                                 <div style={styles.mb8}>
-                                    <h4 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#2d3748' }}>Horaires d'ouverture</h4>
+                                    <h4 style={{ fontSize: '1.125rem', marginBottom: '1rem', color: '#2d3748' }}>Horaires d'ouverture</h4>
                                     <div style={styles.contactItem}>
                                         <FaClock style={styles.contactIcon} />
                                         <div>
@@ -289,7 +349,7 @@ const AppointmentPage = () => {
                                 </div>
 
                                 <div style={styles.mb8}>
-                                    <h4 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#2d3748' }}>Coordonnées</h4>
+                                    <h4 style={{ fontSize: '1.125rem', marginBottom: '1rem', color: '#2d3748' }}>Coordonnées</h4>
                                     <div style={styles.contactItem}>
                                         <FaPhone style={styles.contactIcon} />
                                         <span>05 22 22 22 22</span>
@@ -305,7 +365,7 @@ const AppointmentPage = () => {
                                 </div>
 
                                 <div>
-                                    <h4 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#2d3748' }}>Adresse</h4>
+                                    <h4 style={{ fontSize: '1.125rem', marginBottom: '1rem', color: '#2d3748' }}>Adresse</h4>
                                     <div style={styles.contactItem}>
                                         <FaMapMarkerAlt style={styles.contactIcon} />
                                         <div>
@@ -321,7 +381,7 @@ const AppointmentPage = () => {
                 </section>
 
                 {/* Section Préparation aux examens */}
-                <section style={{ ...styles.section, backgroundColor: '#f7fafc' }}>
+                <section style={{ ...getResponsiveStyle(styles.section), backgroundColor: '#f7fafc' }}>
                     <div style={styles.container}>
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -330,14 +390,14 @@ const AppointmentPage = () => {
                             viewport={{ once: true }}
                             style={{ ...styles.textCenter, ...styles.mb12 }}
                         >
-                            <h2 style={styles.sectionTitle}>Préparation aux examens</h2>
+                            <h2 style={getResponsiveStyle(styles.sectionTitle)}>Préparation aux examens</h2>
                             <div style={styles.divider}></div>
-                            <p style={styles.sectionSubtitle}>
+                            <p style={getResponsiveStyle(styles.sectionSubtitle)}>
                                 Informations importantes pour bien préparer votre examen
                             </p>
                         </motion.div>
 
-                        <div style={{ ...styles.grid, ...styles.gridCols2 }}>
+                        <div style={getResponsiveStyle(styles.preparationGrid)}>
                             {[
                                 {
                                     title: "IRM",
@@ -362,12 +422,12 @@ const AppointmentPage = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: index * 0.1 }}
                                     viewport={{ once: true }}
-                                    style={styles.card}
+                                    style={getResponsiveStyle(styles.card)}
                                 >
-                                    <h3 style={{ ...styles.cardTitle, fontSize: '1.25rem' }}>
+                                    <h3 style={{ ...getResponsiveStyle(styles.cardTitle), fontSize: '1.25rem' }}>
                                         {item.title}
                                     </h3>
-                                    <p>{item.content}</p>
+                                    <p style={{ fontSize: '0.875rem' }}>{item.content}</p>
                                 </motion.div>
                             ))}
                         </div>

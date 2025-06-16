@@ -359,13 +359,13 @@ const HomePage = () => {
                                 et le samedi de 9h à 13h pour convenir d'un rendez-vous.
                             </p>
                             <Link to="/contact">
-                                <motion.button
+                                <motion.a
                                     style={styles.ctaButton}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
                                     Contactez-nous
-                                </motion.button>
+                                </motion.a>
                             </Link>
                         </motion.div>
                     </div>

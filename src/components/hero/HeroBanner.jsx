@@ -2,43 +2,46 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const HeroBanner = ({
-    title = 'Contactez-nous',
-    subtitle = 'Prenez rendez-vous ou posez-nous vos questions',
-    badge = 'Centre de Radiologie Professionnel',
+    title = '',
+    subtitle = '',
+    badge = '',
 }) => {
-    const professionalStyles = {
+    const styles = {
         heroSection: {
             background: 'linear-gradient(135deg, #0077B6 0%, #00A8CC 100%)',
             color: '#FFFFFF',
-            padding: '120px 0 80px',
+            padding: '8rem 0 5rem',
             textAlign: 'center',
             position: 'relative',
             overflow: 'hidden',
+            minHeight: title || subtitle || badge ? 'auto' : '50vh', // Hauteur minimale si aucun contenu
         },
         container: {
             maxWidth: '1200px',
+            width: '90%',
             margin: '0 auto',
-            padding: '0 20px',
+            padding: '0 1rem',
         },
         heroContent: {
             position: 'relative',
             zIndex: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.25rem', // Espacement uniforme entre les éléments
         },
         heroTitle: {
-            fontSize: '3.5rem',
+            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
             fontWeight: 700,
-            marginBottom: '20px',
             lineHeight: 1.2,
             textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+            margin: 0, // Reset margin pour utiliser gap du parent
         },
         heroSubtitle: {
-            fontSize: '1.3rem',
+            fontSize: 'clamp(1rem, 2vw, 1.3rem)',
             fontWeight: 300,
-            marginBottom: '30px',
             opacity: 0.9,
             maxWidth: '600px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
+            margin: '0 auto', // Centrage horizontal
             lineHeight: 1.6,
         },
         heroBadge: {
@@ -46,12 +49,13 @@ const HeroBanner = ({
             background: 'rgba(255, 255, 255, 0.2)',
             backdropFilter: 'blur(10px)',
             border: '1px solid rgba(255, 255, 255, 0.3)',
-            padding: '12px 24px',
+            padding: '0.75rem 1.5rem',
             borderRadius: '30px',
             fontWeight: 500,
-            fontSize: '0.9rem',
+            fontSize: 'clamp(0.75rem, 2vw, 0.9rem)',
             textTransform: 'uppercase',
             letterSpacing: '1px',
+            alignSelf: 'center', // Centrage pour le badge
         },
         grainOverlay: {
             content: "''",
@@ -64,41 +68,66 @@ const HeroBanner = ({
             opacity: 0.3,
             zIndex: 1,
         },
+    };
 
-        // Responsive Styles
-        '@media (maxWidth: 768px)': {
-            heroTitle: {
-                fontSize: '2.2rem',
+    // Media queries en JavaScript
+    const responsiveStyles = {
+        '@media (max-width: 768px)': {
+            heroSection: {
+                padding: title || subtitle || badge ? '6rem 0 4rem' : '4rem 0',
             },
-            heroSubtitle: {
-                fontSize: '1rem',
+        },
+        '@media (max-width: 480px)': {
+            heroSection: {
+                padding: title || subtitle || badge ? '5rem 0 3rem' : '3rem 0',
+            },
+            heroBadge: {
+                padding: '0.5rem 1rem',
             },
         },
     };
 
-    return (
-        <section style={professionalStyles.heroSection} className="professional-hero-section">
-            <div style={professionalStyles.grainOverlay}></div>
+    // Fusion des styles de base et des styles responsive
+    const getStyles = (styleKey) => ({
+        ...styles[styleKey],
+        ...(responsiveStyles['@media (max-width: 768px)']?.[styleKey] || {}),
+        ...(responsiveStyles['@media (max-width: 480px)']?.[styleKey] || {}),
+    });
 
-            <div style={professionalStyles.container} className="professional-container">
-                <motion.div
-                    style={professionalStyles.heroContent}
-                    className="professional-hero-content"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <h1 style={professionalStyles.heroTitle} className="professional-hero-title">
-                        {title}
-                    </h1>
-                    <p style={professionalStyles.heroSubtitle} className="professional-hero-subtitle">
-                        {subtitle}
-                    </p>
-                    <div style={professionalStyles.heroBadge} className="professional-hero-badge">
-                        <span>{badge}</span>
-                    </div>
-                </motion.div>
-            </div>
+    // Vérifier si au moins un des éléments est présent
+    const hasContent = title || subtitle || badge;
+
+    return (
+        <section style={getStyles('heroSection')} className="professional-hero-section">
+            <div style={styles.grainOverlay}></div>
+
+            {hasContent && (
+                <div style={getStyles('container')} className="professional-container">
+                    <motion.div
+                        style={getStyles('heroContent')}
+                        className="professional-hero-content"
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        {title && (
+                            <h1 style={getStyles('heroTitle')} className="professional-hero-title">
+                                {title}
+                            </h1>
+                        )}
+                        {subtitle && (
+                            <p style={getStyles('heroSubtitle')} className="professional-hero-subtitle">
+                                {subtitle}
+                            </p>
+                        )}
+                        {badge && (
+                            <div style={getStyles('heroBadge')} className="professional-hero-badge">
+                                <span>{badge}</span>
+                            </div>
+                        )}
+                    </motion.div>
+                </div>
+            )}
         </section>
     );
 };
