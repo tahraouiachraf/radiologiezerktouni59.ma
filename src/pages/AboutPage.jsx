@@ -2,33 +2,20 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { radiologue } from '../constants';
 import Seo from '../components/seo/Seo';
+import HeroBanner from '../components/hero/HeroBanner';
 
 const AboutPage = () => {
     return (
         <>
             <Seo title="À propos - Radiologie Zerktouni 59" />
-            <section className="professional-hero-section">
-                <div className="professional-container">
-                    <motion.div
-                        className="professional-hero-content"
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <h1 className="professional-hero-title">À propos de nous</h1>
-                        <p className="professional-hero-subtitle">
-                            À propos de notre centre
-                        </p>
-                        <div className="professional-hero-badge">
-                            <span>Centre de Radiologie Professionnel</span>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+            {/* Hero Section */}
+            <HeroBanner
+                title="À propos de nous"
+                subtitle="À propos de notre centre"
+                badge="Centre de Radiologie Professionnel"
+            />
 
             <section className="rad-about-section">
-
-
                 <div className="rad-container">
                     <div className="rad-about-grid">
                         <motion.div
