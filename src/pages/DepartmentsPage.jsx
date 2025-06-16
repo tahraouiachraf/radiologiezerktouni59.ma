@@ -257,6 +257,24 @@ const DepartmentsPage = () => {
         <>
             <Seo title="Départements de Radiologie" />
             <div style={{ overflow: 'hidden' }}>
+                <section className="professional-hero-section">
+                    <div className="professional-container">
+                        <motion.div
+                            className="professional-hero-content"
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <h1 className="professional-hero-title">Contactez-nous</h1>
+                            <p className="professional-hero-subtitle">
+                                Prenez rendez-vous ou posez-nous vos questions
+                            </p>
+                            <div className="professional-hero-badge">
+                                <span>Centre de Radiologie Professionnel</span>
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
 
                 {/* Section À propos des départements */}
                 <section style={styles.aboutSection}>
