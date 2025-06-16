@@ -1,6 +1,7 @@
 import React from 'react';
 import Seo from '../components/seo/Seo';
 import { motion } from 'framer-motion';
+import HeroBanner from '../components/hero/HeroBanner';
 import { FaXRay, FaProcedures, FaClinicMedical, FaUserMd, FaTeeth, FaBone } from 'react-icons/fa';
 import { GiBrain, GiSpinalCoil, GiKidneys, GiBreastplate } from 'react-icons/gi';
 
@@ -145,23 +146,14 @@ const ServicesPage = () => {
     return (
         <>
             <Seo title="Nos Prestations - Centre de Radiologie" />
+            <HeroBanner
+                title="Nos Prestations"
+                subtitle=""
+                badge="Un plateau technique complet et des professionnels expérimentés pour répondre à tous vos besoins en imagerie médicale"
+            />
             <div style={{ overflow: 'hidden' }}>
                 <section style={styles.section}>
                     <div style={styles.container}>
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            viewport={{ once: true }}
-                            style={{ ...styles.textCenter, ...styles.mb12 }}
-                        >
-                            <h2 style={styles.sectionTitle}>Nos Prestations</h2>
-                            <div style={styles.divider}></div>
-                            <p style={styles.sectionSubtitle}>
-                                Un plateau technique complet et des professionnels expérimentés pour répondre à tous vos besoins en imagerie médicale
-                            </p>
-                        </motion.div>
-
                         <div style={{ ...styles.grid, ...styles.gridCols3 }}>
                             {services.map((service, index) => (
                                 <motion.div
