@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { radiologue } from '../../constants';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -129,22 +130,24 @@ const Hero = () => {
                                 Imagerie médicale de haute technologie avec des professionnels expérimentés
                             </p>
                             <div className="hero-buttons">
-                                <motion.a
-                                    href="#contact"
-                                    className="btn"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    Prendre Rendez-vous <FaArrowRight />
-                                </motion.a>
-                                <motion.a
-                                    href="#services"
-                                    className="btn btn-outline"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    Nos Services
-                                </motion.a>
+                                <Link to="/contact">
+                                    <motion.button
+                                        className="btn"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                    >
+                                        Prendre Rendez-vous <FaArrowRight />
+                                    </motion.button>
+                                </Link>
+                                <Link to="/services">
+                                    <motion.button
+                                        className="btn btn-outline"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                    >
+                                        Nos Services
+                                    </motion.button>
+                                </Link>
                             </div>
                         </motion.div>
 
