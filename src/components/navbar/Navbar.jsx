@@ -47,7 +47,7 @@ const Navbar = () => {
                 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
                 
                 :root {
-                    --primary-color: #0066cc;
+                    --primary-color: #3490dc;
                     --white: #fff;
                     --text-color: #444;
                     --dark-color: #222;
