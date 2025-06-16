@@ -4,26 +4,136 @@ import { motion } from 'framer-motion';
 import HeroBanner from '../components/hero/HeroBanner';
 import { FaXRay, FaProcedures, FaClinicMedical, FaUserMd, FaTeeth, FaBone } from 'react-icons/fa';
 import { GiBrain, GiSpinalCoil, GiKidneys, GiBreastplate } from 'react-icons/gi';
+import { useMediaQuery } from 'react-responsive';
 
 const ServicesPage = () => {
+    // Définition des breakpoints
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
+    const isDesktop = useMediaQuery({ minWidth: 1024 });
+
+    // Fonction pour déterminer le nombre de colonnes en fonction de l'écran
+    const getGridCols = () => {
+        if (isMobile) return 1;
+        if (isTablet) return 2;
+        return 3;
+    };
+
     const styles = {
-        container: { width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '0 15px' },
-        section: { padding: '4rem 0' },
-        sectionTitle: { fontSize: '2.25rem', fontWeight: '700', color: '#3490dc', marginBottom: '1rem', textAlign: 'center' },
-        sectionSubtitle: { fontSize: '1.125rem', color: '#718096', maxWidth: '800px', margin: '0 auto 3rem auto', textAlign: 'center' },
-        divider: { width: '6rem', height: '0.25rem', backgroundColor: '#38c172', margin: '0 auto 1.5rem auto' },
-        serviceCard: { backgroundColor: '#ffffff', borderRadius: '0.5rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', overflow: 'hidden', transition: 'transform 0.3s ease, box-shadow 0.3s ease' },
-        serviceHeader: { backgroundColor: '#3490dc', color: '#ffffff', padding: '1.5rem', display: 'flex', alignItems: 'center' },
-        serviceIcon: { fontSize: '2rem', marginRight: '1rem' },
-        serviceTitle: { fontSize: '1.5rem', fontWeight: '600', margin: 0 },
-        serviceBody: { padding: '1.5rem' },
-        serviceList: { listStyle: 'none', padding: 0, margin: 0 },
-        serviceListItem: { padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0', display: 'flex', alignItems: 'center' },
-        serviceListIcon: { color: '#38c172', marginRight: '0.75rem' },
-        grid: { display: 'grid', gap: '2rem' },
-        gridCols3: { gridTemplateColumns: 'repeat(3, 1fr)' },
-        textCenter: { textAlign: 'center' },
-        mb12: { marginBottom: '3rem' }
+        container: {
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: isMobile ? '0 1rem' : '0 15px'
+        },
+        section: {
+            padding: isMobile ? '2rem 0' : '4rem 0'
+        },
+        sectionTitle: {
+            fontSize: isMobile ? '1.75rem' : '2.25rem',
+            fontWeight: '700',
+            color: '#3490dc',
+            marginBottom: '1rem',
+            textAlign: 'center',
+            padding: isMobile ? '0 1rem' : '0'
+        },
+        sectionSubtitle: {
+            fontSize: isMobile ? '1rem' : '1.125rem',
+            color: '#718096',
+            maxWidth: '800px',
+            margin: '0 auto 3rem auto',
+            textAlign: 'center',
+            padding: isMobile ? '0 1rem' : '0'
+        },
+        divider: {
+            width: '6rem',
+            height: '0.25rem',
+            backgroundColor: '#38c172',
+            margin: '0 auto 1.5rem auto'
+        },
+        serviceCard: {
+            backgroundColor: '#ffffff',
+            borderRadius: '0.5rem',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            overflow: 'hidden',
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            margin: isMobile ? '0 0.5rem 1rem 0.5rem' : '0'
+        },
+        serviceHeader: {
+            backgroundColor: '#3490dc',
+            color: '#ffffff',
+            padding: isMobile ? '1rem' : '1.5rem',
+            display: 'flex',
+            alignItems: 'center'
+        },
+        serviceIcon: {
+            fontSize: isMobile ? '1.5rem' : '2rem',
+            marginRight: isMobile ? '0.75rem' : '1rem'
+        },
+        serviceTitle: {
+            fontSize: isMobile ? '1.25rem' : '1.5rem',
+            fontWeight: '600',
+            margin: 0
+        },
+        serviceBody: {
+            padding: isMobile ? '1rem' : '1.5rem'
+        },
+        serviceList: {
+            listStyle: 'none',
+            padding: 0,
+            margin: 0
+        },
+        serviceListItem: {
+            padding: isMobile ? '0.5rem 0' : '0.75rem 0',
+            borderBottom: '1px solid #e2e8f0',
+            display: 'flex',
+            alignItems: 'center',
+            fontSize: isMobile ? '0.9rem' : '1rem'
+        },
+        serviceListIcon: {
+            color: '#38c172',
+            marginRight: isMobile ? '0.5rem' : '0.75rem',
+            fontSize: isMobile ? '0.8rem' : '1rem'
+        },
+        grid: {
+            display: 'grid',
+            gap: isMobile ? '1rem' : '2rem'
+        },
+        gridCols1: {
+            gridTemplateColumns: 'repeat(1, 1fr)'
+        },
+        gridCols2: {
+            gridTemplateColumns: 'repeat(2, 1fr)'
+        },
+        gridCols3: {
+            gridTemplateColumns: 'repeat(3, 1fr)'
+        },
+        textCenter: {
+            textAlign: 'center'
+        },
+        mb12: {
+            marginBottom: '3rem'
+        },
+        equipmentCard: {
+            backgroundColor: '#ffffff',
+            borderRadius: '0.5rem',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            padding: isMobile ? '1rem' : '1.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            textAlign: 'center',
+            margin: isMobile ? '0 0.5rem 1rem 0.5rem' : '0'
+        },
+        equipmentTitle: {
+            fontSize: isMobile ? '1.25rem' : '1.5rem',
+            fontWeight: '600',
+            color: '#3490dc',
+            marginBottom: '1rem'
+        },
+        equipmentDescription: {
+            fontSize: isMobile ? '0.9rem' : '1rem'
+        }
     };
 
     const services = [
@@ -113,7 +223,7 @@ const ServicesPage = () => {
                 "Infiltrations articulaires",
                 "Infiltrations rachidiennes",
                 "Ponctions biopsies guidées",
-                "Drainages d'abccès",
+                "Drainages d'abcès",
                 "Arthrographies"
             ]
         },
@@ -154,7 +264,7 @@ const ServicesPage = () => {
             <div style={{ overflow: 'hidden' }}>
                 <section style={styles.section}>
                     <div style={styles.container}>
-                        <div style={{ ...styles.grid, ...styles.gridCols3 }}>
+                        <div style={{ ...styles.grid, ...(getGridCols() === 1 ? styles.gridCols1 : getGridCols() === 2 ? styles.gridCols2 : styles.gridCols3) }}>
                             {services.map((service, index) => (
                                 <motion.div
                                     key={service.id}
@@ -164,7 +274,7 @@ const ServicesPage = () => {
                                     viewport={{ once: true }}
                                     style={styles.serviceCard}
                                     whileHover={{
-                                        y: -5,
+                                        y: isMobile ? 0 : -5,
                                         boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)'
                                     }}
                                 >
@@ -205,7 +315,7 @@ const ServicesPage = () => {
                             </p>
                         </motion.div>
 
-                        <div style={{ ...styles.grid, ...styles.gridCols3 }}>
+                        <div style={{ ...styles.grid, ...(getGridCols() === 1 ? styles.gridCols1 : getGridCols() === 2 ? styles.gridCols2 : styles.gridCols3) }}>
                             {[
                                 {
                                     title: "IRM 1.5 Tesla",
@@ -238,19 +348,16 @@ const ServicesPage = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: index * 0.1 }}
                                     viewport={{ once: true }}
-                                    style={{
-                                        ...styles.serviceCard,
-                                        padding: '1.5rem',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center',
-                                        textAlign: 'center'
+                                    style={styles.equipmentCard}
+                                    whileHover={{
+                                        y: isMobile ? 0 : -5,
+                                        boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)'
                                     }}
                                 >
-                                    <h3 style={{ ...styles.serviceTitle, color: '#3490dc', marginBottom: '1rem' }}>
+                                    <h3 style={styles.equipmentTitle}>
                                         {equipment.title}
                                     </h3>
-                                    <p>{equipment.description}</p>
+                                    <p style={styles.equipmentDescription}>{equipment.description}</p>
                                 </motion.div>
                             ))}
                         </div>
