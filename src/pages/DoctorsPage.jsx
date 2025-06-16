@@ -1,10 +1,10 @@
 import React from 'react';
 import Seo from '../components/seo/Seo';
 import { motion } from 'framer-motion';
+import HeroBanner from '../components/hero/HeroBanner';
 import { FaUserMd, FaClinicMedical, FaAward, FaGraduationCap } from 'react-icons/fa';
 
 const DoctorsPage = () => {
-    // Styles CSS en objets JavaScript
     const styles = {
         container: {
             width: '100%',
@@ -189,11 +189,17 @@ const DoctorsPage = () => {
     return (
         <>
             <Seo title="Nos Docteurs - Centre de Radiologie" />
+            {/* Hero Section */}
+            <HeroBanner
+                title="Nos Docteurs"
+                subtitle=""
+                badge="Une équipe de radiologues expérimentés et spécialisés pour une prise en charge optimale"
+            />
             <div style={{ overflow: 'hidden' }}>
                 {/* Section Nos Docteurs */}
                 <section style={styles.section}>
                     <div style={styles.container}>
-                        <motion.div
+                        {/* <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
@@ -205,7 +211,7 @@ const DoctorsPage = () => {
                             <p style={styles.sectionSubtitle}>
                                 Une équipe de radiologues expérimentés et spécialisés pour une prise en charge optimale
                             </p>
-                        </motion.div>
+                        </motion.div> */}
 
                         <div style={{ ...styles.grid, ...styles.gridCols3 }}>
                             {doctors.map((doctor, index) => (
