@@ -2,6 +2,7 @@ import React from 'react';
 import Seo from '../components/seo/Seo';
 import { motion } from 'framer-motion';
 import { FaPhone, FaCalendarAlt, FaMapMarkerAlt, FaClock, FaInfoCircle } from 'react-icons/fa';
+import HeroBanner from '../components/hero/HeroBanner';
 
 const AppointmentPage = () => {
     // Styles CSS en objets JavaScript
@@ -157,21 +158,13 @@ const AppointmentPage = () => {
             <div style={{ overflow: 'hidden' }}>
                 {/* Section Prendre Rendez-vous */}
                 <section style={styles.section}>
+                    {/* Hero Section */}
+                    <HeroBanner
+                        title="Prendre Rendez-vous"
+                        subtitle=""
+                        badge="Réservez votre examen en ligne ou par téléphone. Notre équipe est à votre disposition pour vous conseiller."
+                    />
                     <div style={styles.container}>
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            viewport={{ once: true }}
-                            style={{ ...styles.textCenter, ...styles.mb12 }}
-                        >
-                            <h2 style={styles.sectionTitle}>Prendre Rendez-vous</h2>
-                            <div style={styles.divider}></div>
-                            <p style={styles.sectionSubtitle}>
-                                Réservez votre examen en ligne ou par téléphone. Notre équipe est à votre disposition pour vous conseiller.
-                            </p>
-                        </motion.div>
-
                         <div style={{ ...styles.grid, ...styles.gridCols2 }}>
                             {/* Formulaire de RDV */}
                             <motion.div
