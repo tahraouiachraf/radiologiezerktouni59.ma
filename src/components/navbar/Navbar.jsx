@@ -34,7 +34,7 @@ const Navbar = () => {
         { name: 'Départements', path: '/departments' },
         { name: 'Nos Docteurs', path: '/doctors' },
         { name: 'Nos Prestations', path: '/services' },
-        { name: 'Prendre rendez-vous', path: '/appointment' },
+        { name: 'Prendre rendez-vous', path: '/prendre-rendez-vous' },
         { name: 'Contact', path: '/contact' },
     ];
 
