@@ -130,7 +130,7 @@ const Hero = () => {
                                 Imagerie médicale de haute technologie avec des professionnels expérimentés
                             </p>
                             <div className="hero-buttons">
-                                <Link to="/contact">
+                                <Link to="/appointment">
                                     <motion.button
                                         className="btn"
                                         whileHover={{ scale: 1.05 }}
