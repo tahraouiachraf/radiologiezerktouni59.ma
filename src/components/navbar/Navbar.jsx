@@ -176,12 +176,6 @@ const Navbar = () => {
                     width: 100%;
                 }
 
-                a:focus,
-                button:focus {
-                    outline: 2px dashed var(--primary-color);
-                    outline-offset: 2px;
-                }
-
                 @media (max-width: 992px) {
                     .top-bar {
                         display: none;

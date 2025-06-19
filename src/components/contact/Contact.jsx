@@ -257,14 +257,6 @@ const Contact = () => {
             link: "https://goo.gl/maps/XYZ123",
             description: "Accès facile depuis tout Casablanca",
             isEmergency: false
-        },
-        {
-            icon: <FaPhone />,
-            title: "Urgences",
-            content: "+212 611-111111",
-            link: "tel:+212611111111",
-            description: "Service d'urgence disponible 24/7",
-            isEmergency: true
         }
     ];
 
