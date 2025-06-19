@@ -1,29 +1,40 @@
 import { FaPhone, FaMapMarkerAlt, FaClock, FaEnvelope, FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
+const ScrollToTop = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+};
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const footerLinks = [
         {
-            title: "Liens Rapides", 
+            title: "Liens Rapides",
             links: [
                 { name: "Accueil", path: "/" },
                 { name: "Nos Services", path: "/services" },
-                { name: "Équipements", path: "/about#equipements" },
-                { name: "Notre Équipe", path: "/about#equipe" },
+                { name: "Équipements", path: "/about" },
+                { name: "Notre Équipe", path: "/about" },
                 { name: "Contact", path: "/contact" }
             ]
         },
         {
-            title: "Nos Services", 
+            title: "Nos Services",
             links: [
-                { name: "Radiologie Numérique", path: "/services#radiologie" },
-                { name: "Échographie", path: "/services#echographie" },
-                { name: "Mammographie", path: "/services#mammographie" },
-                { name: "Scanner", path: "/services#scanner" },
-                { name: "IRM", path: "/services#irm" }
+                { name: "Radiologie Numérique", path: "/services" },
+                { name: "Échographie", path: "/services" },
+                { name: "Mammographie", path: "/services" },
+                { name: "Scanner", path: "/services" },
+                { name: "IRM", path: "/services" }
             ]
         }
     ];
@@ -37,6 +48,8 @@ const Footer = () => {
 
     return (
         <>
+            <ScrollToTop />
+
             <style jsx>{`
                 .footer {
                     background-color: var(--primary-color);
@@ -66,7 +79,7 @@ const Footer = () => {
                     font-size: 1.5rem;
                     margin-bottom: 25px;
                     position: relative;
-                    padding-bottom: 10px;
+                    padding-bottom: 10px; 
                 }
 
                 .footer-col h3::after {
@@ -94,12 +107,14 @@ const Footer = () => {
                 .footer-contact-item {
                     display: flex;
                     align-items: center;
+                    justify-content: flex-start;
                 }
 
                 .footer-contact-icon {
                     color: var(--secondary-color);
                     font-size: 1.3rem;
                     margin-right: 10px;
+                    flex-shrink: 0;
                 }
 
                 .footer-links {
@@ -142,12 +157,14 @@ const Footer = () => {
                     display: flex;
                     gap: 15px;
                     margin-top: 25px;
+                    justify-content: flex-start;
                 }
 
                 .social-links a {
                     color: var(--white);
                     font-size: 1.3rem;
                     opacity: 0.8;
+                    transition: opacity 0.3s ease;
                 }
 
                 .social-links a:hover {
@@ -200,7 +217,7 @@ const Footer = () => {
                     }
 
                     .footer-contact-item {
-                        justify-content: center;
+                        justify-content: relative;
                     }
 
                     .footer-links a:hover {
@@ -259,6 +276,7 @@ const Footer = () => {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             viewport={{ once: true }}
                         >
+                            <h3>Contact</h3>
                             <div className="footer-contact">
                                 <div className="footer-contact-item">
                                     <FaPhone className="footer-contact-icon" />
@@ -300,8 +318,8 @@ const Footer = () => {
                     >
                         <p>&copy; {currentYear} Radiologie Zerktouni 59. Tous droits réservés.</p>
                         <div className="legal-links">
-                            <Link to="/mentions-legales">Mentions légales</Link>
-                            <Link to="/politique-de-confidentialite">Politique de confidentialité</Link>
+                            <Link to="#">Mentions légales</Link>
+                            <Link to="#">Politique de confidentialité</Link>
                         </div>
                     </motion.div>
                 </div>
