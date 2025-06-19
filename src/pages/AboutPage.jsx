@@ -65,7 +65,7 @@ const AboutPage = () => {
                 .rad-section-title {
                     font-size: 2.25rem;
                     font-weight: 700;
-                    color: #1a365d;
+                    color: #3490dc;
                     margin-bottom: 1.25rem;
                     line-height: 1.3;
                     position: relative;
