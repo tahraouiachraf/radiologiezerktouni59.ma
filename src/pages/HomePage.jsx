@@ -358,15 +358,19 @@ const HomePage = () => {
                                 Notre secrétariat est à votre disposition du lundi au vendredi de 8h à 19h
                                 et le samedi de 9h à 13h pour convenir d'un rendez-vous.
                             </p>
-                            <Link to="/contact">
-                                <motion.a
+
+                            {/* ✅ Lien exploré, valide SEO & accessibilité */}
+                            <Link to="/contact" aria-label="Aller à la page Contact" style={{ textDecoration: 'none' }}>
+                                <motion.div
                                     style={styles.ctaButton}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
+                                    role="link"
                                 >
                                     Contactez-nous
-                                </motion.a>
+                                </motion.div>
                             </Link>
+
                         </motion.div>
                     </div>
                 </section>
