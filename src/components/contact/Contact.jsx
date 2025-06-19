@@ -271,43 +271,68 @@ const Contact = () => {
                     <div className="contact-grid">
                         {/* Colonne de gauche - Formulaire de contact */}
                         <motion.div
-                            initial={{ opacity: 0, x: -20 }}
+                            initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
                             viewport={{ once: true, margin: '-100px' }}
-                            className="contact-card"
+                            className="appointment-card"
                             style={styles.card}
                         >
-                            <h3 className="contact-card-title" style={styles.cardTitle}>
+                            <h3 className="appointment-card-title" style={styles.cardTitle}>
                                 <FaPhone style={styles.cardIcon} />
-                                Nos coordonnées
+                                Nous contacter
                             </h3>
 
                             <div style={styles.mb8}>
-                                {contactInfo.map((item, index) => (
-                                    <div key={index} className="contact-contact-item" style={styles.contactItem}>
-                                        {item.icon}
-                                        <div>
-                                            <p style={{ margin: 0, fontWeight: '600' }}>{item.title}</p>
-                                            <a
-                                                href={item.link}
-                                                target={item.link.startsWith('http') ? '_blank' : '_self'}
-                                                rel="noopener noreferrer"
-                                                style={{
-                                                    color: '#3182ce',
-                                                    textDecoration: 'none',
-                                                    display: 'block',
-                                                    margin: '0.25rem 0'
-                                                }}
-                                            >
-                                                {item.content}
-                                            </a>
-                                            <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.875rem' }}>
-                                                {item.description}
-                                            </p>
-                                        </div>
+                                <h4 style={{
+                                    fontSize: '1.125rem',
+                                    marginBottom: '1rem',
+                                    color: '#2d3748'
+                                }}>
+                                    Horaires d'ouverture
+                                </h4>
+                                <div className="appointment-contact-item" style={styles.contactItem}>
+                                    <FaClock style={styles.contactIcon} />
+                                    <div>
+                                        <p style={{ margin: 0, fontWeight: '600' }}>Lundi - Vendredi</p>
+                                        <p style={{ margin: 0 }}>8h00 - 19h00</p>
                                     </div>
-                                ))}
+                                </div>
+                                <div className="appointment-contact-item" style={styles.contactItem}>
+                                    <FaClock style={styles.contactIcon} />
+                                    <div>
+                                        <p style={{ margin: 0, fontWeight: '600' }}>Samedi</p>
+                                        <p style={{ margin: 0 }}>9h00 - 13h00</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style={styles.mb8}>
+                                <h4 style={{
+                                    fontSize: '1.125rem',
+                                    marginBottom: '1rem',
+                                    color: '#2d3748'
+                                }}>
+                                    Coordonnées
+                                </h4>
+                                <div className="appointment-contact-item" style={styles.contactItem}>
+                                    <FaPhone style={styles.contactIcon} />
+                                    <a href="tel:+212522881111" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                        05 22 88 11 11
+                                    </a>
+                                </div>
+                                <div className="appointment-contact-item" style={styles.contactItem}>
+                                    <FaPhone style={styles.contactIcon} />
+                                    <a href="tel:+212611111111" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                        06 11 11 11 11 (Urgences)
+                                    </a>
+                                </div>
+                                <div className="appointment-contact-item" style={styles.contactItem}>
+                                    <FaPhone style={styles.contactIcon} />
+                                    <a href="mailto:contact@radiologie-aboumadi.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                        contact@radiologie-aboumadi.com
+                                    </a>
+                                </div>
                             </div>
 
                             <div>
@@ -316,20 +341,29 @@ const Contact = () => {
                                     marginBottom: '1rem',
                                     color: '#2d3748'
                                 }}>
-                                    Horaires d'ouverture
+                                    Adresse
                                 </h4>
-                                <div className="contact-contact-item" style={styles.contactItem}>
-                                    <FaClock style={styles.contactIcon} />
+                                <div className="appointment-contact-item" style={styles.contactItem}>
+                                    <FaMapMarkerAlt style={styles.contactIcon} />
                                     <div>
-                                        <p style={{ margin: 0, fontWeight: '600' }}>Lundi - Vendredi</p>
-                                        <p style={{ margin: 0 }}>8h00 - 19h00</p>
-                                    </div>
-                                </div>
-                                <div className="contact-contact-item" style={styles.contactItem}>
-                                    <FaClock style={styles.contactIcon} />
-                                    <div>
-                                        <p style={{ margin: 0, fontWeight: '600' }}>Samedi</p>
-                                        <p style={{ margin: 0 }}>9h00 - 13h00</p>
+                                        <p style={{ margin: 0 }}>Centre de Radiologie Aboumadi</p>
+                                        <p style={{ margin: '0.25rem 0 0 0' }}>123 Avenue des Cliniques</p>
+                                        <p style={{ margin: '0.25rem 0 0 0' }}>Casablanca, Maroc</p>
+                                        <a
+                                            href="https://maps.google.com"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                display: 'inline-block',
+                                                marginTop: '0.5rem',
+                                                color: '#3182ce',
+                                                textDecoration: 'none',
+                                                fontWeight: '500',
+                                                fontSize: '0.875rem'
+                                            }}
+                                        >
+                                            Voir sur la carte →
+                                        </a>
                                     </div>
                                 </div>
                             </div>
