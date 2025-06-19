@@ -5,22 +5,16 @@ import { FaPhone, FaCalendarAlt, FaMapMarkerAlt, FaClock, FaInfoCircle } from 'r
 import HeroBanner from '../components/hero/HeroBanner';
 
 const AppointmentPage = () => {
-    // Styles CSS en objets JavaScript avec approche mobile-first
+    // Styles CSS en objets JavaScript
     const styles = {
         container: {
             width: '100%',
             maxWidth: '1200px',
             margin: '0 auto',
-            padding: '0 1rem',
-            '@media (min-width: 768px)': {
-                padding: '0 1.5rem'
-            }
+            padding: '0 1rem'
         },
         section: {
-            padding: '3rem 0',
-            '@media (min-width: 768px)': {
-                padding: '5rem 0'
-            }
+            padding: '3rem 0'
         },
         sectionTitle: {
             fontSize: '1.75rem',
@@ -28,10 +22,7 @@ const AppointmentPage = () => {
             color: '#2c5282',
             marginBottom: '1rem',
             textAlign: 'center',
-            lineHeight: '1.3',
-            '@media (min-width: 768px)': {
-                fontSize: '2.25rem'
-            }
+            lineHeight: '1.3'
         },
         sectionSubtitle: {
             fontSize: '1rem',
@@ -40,20 +31,13 @@ const AppointmentPage = () => {
             margin: '0 auto 2rem auto',
             textAlign: 'center',
             padding: '0 1rem',
-            lineHeight: '1.6',
-            '@media (min-width: 768px)': {
-                fontSize: '1.125rem',
-                marginBottom: '3rem'
-            }
+            lineHeight: '1.6'
         },
         divider: {
             width: '4rem',
             height: '0.25rem',
             backgroundColor: '#38b2ac',
-            margin: '0 auto 2rem auto',
-            '@media (min-width: 768px)': {
-                marginBottom: '3rem'
-            }
+            margin: '0 auto 2rem auto'
         },
         card: {
             backgroundColor: '#ffffff',
@@ -62,11 +46,7 @@ const AppointmentPage = () => {
             padding: '1.5rem',
             marginBottom: '1.5rem',
             border: '1px solid #e2e8f0',
-            '@media (min-width: 768px)': {
-                padding: '2rem',
-                marginBottom: '0',
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-            }
+            height: 'fit-content'
         },
         cardTitle: {
             fontSize: '1.25rem',
@@ -74,11 +54,7 @@ const AppointmentPage = () => {
             color: '#2d3748',
             marginBottom: '1.25rem',
             display: 'flex',
-            alignItems: 'center',
-            '@media (min-width: 768px)': {
-                fontSize: '1.5rem',
-                marginBottom: '1.5rem'
-            }
+            alignItems: 'center'
         },
         cardIcon: {
             marginRight: '0.75rem',
@@ -108,10 +84,7 @@ const AppointmentPage = () => {
             fontSize: '0.875rem',
             fontWeight: '600',
             color: '#4a5568',
-            marginBottom: '0.5rem',
-            '@media (min-width: 768px)': {
-                fontSize: '1rem'
-            }
+            marginBottom: '0.5rem'
         },
         formControl: {
             width: '100%',
@@ -121,14 +94,7 @@ const AppointmentPage = () => {
             fontSize: '0.875rem',
             transition: 'all 0.2s ease',
             backgroundColor: '#fff',
-            '&:focus': {
-                outline: 'none',
-                borderColor: '#3182ce',
-                boxShadow: '0 0 0 3px rgba(49, 130, 206, 0.2)'
-            },
-            '@media (min-width: 768px)': {
-                fontSize: '1rem'
-            }
+            boxSizing: 'border-box'
         },
         formSelect: {
             appearance: 'none',
@@ -154,13 +120,7 @@ const AppointmentPage = () => {
             width: '100%',
             display: 'inline-flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            '&:hover': {
-                backgroundColor: '#2c5282'
-            },
-            '@media (min-width: 768px)': {
-                width: 'auto'
-            }
+            justifyContent: 'center'
         },
         contactItem: {
             display: 'flex',
@@ -168,10 +128,7 @@ const AppointmentPage = () => {
             marginBottom: '1.25rem',
             color: '#4a5568',
             fontSize: '0.875rem',
-            lineHeight: '1.6',
-            '@media (min-width: 768px)': {
-                fontSize: '1rem'
-            }
+            lineHeight: '1.6'
         },
         contactIcon: {
             marginRight: '0.75rem',
@@ -180,22 +137,10 @@ const AppointmentPage = () => {
             marginTop: '0.25rem',
             fontSize: '1rem'
         },
-        grid: {
-            display: 'grid',
-            gap: '2rem',
-            gridTemplateColumns: '1fr',
-            '@media (min-width: 992px)': {
-                gridTemplateColumns: 'repeat(2, 1fr)'
-            }
-        },
         preparationGrid: {
             display: 'grid',
             gap: '1.5rem',
-            gridTemplateColumns: '1fr',
-            '@media (min-width: 768px)': {
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '2rem'
-            }
+            gridTemplateColumns: '1fr'
         },
         textCenter: {
             textAlign: 'center'
@@ -205,16 +150,94 @@ const AppointmentPage = () => {
         mb8: { marginBottom: '2rem' }
     };
 
-    // Fonction pour gérer les styles responsives
-    const getResponsiveStyle = (baseStyle, mediaStyles = {}) => {
-        return {
-            ...baseStyle,
-            ...mediaStyles
-        };
-    };
-
     return (
         <>
+            <style>
+                {`
+                .appointment-grid {
+                    display: grid;
+                    gap: 2rem;
+                    grid-template-columns: 1fr;
+                }
+
+                @media (min-width: 768px) {
+                    .appointment-container {
+                        padding: 0 1.5rem;
+                    }
+                    
+                    .appointment-section {
+                        padding: 5rem 0;
+                    }
+                    
+                    .appointment-grid {
+                        grid-template-columns: 2fr 1fr;
+                        gap: 2.5rem;
+                    }
+                    
+                    .appointment-card {
+                        padding: 2rem;
+                        margin-bottom: 0;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    }
+                    
+                    .appointment-section-title {
+                        font-size: 2.25rem;
+                    }
+                    
+                    .appointment-section-subtitle {
+                        font-size: 1.125rem;
+                        margin-bottom: 3rem;
+                    }
+                    
+                    .appointment-divider {
+                        margin-bottom: 3rem;
+                    }
+                    
+                    .appointment-card-title {
+                        font-size: 1.5rem;
+                        margin-bottom: 1.5rem;
+                    }
+                    
+                    .appointment-form-label {
+                        font-size: 1rem;
+                    }
+                    
+                    .appointment-form-control {
+                        font-size: 1rem;
+                    }
+                    
+                    .appointment-submit-button {
+                        width: auto;
+                    }
+                    
+                    .appointment-contact-item {
+                        font-size: 1rem;
+                    }
+                    
+                    .appointment-preparation-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 2rem;
+                    }
+                }
+
+                @media (min-width: 992px) {
+                    .appointment-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                .appointment-form-control:focus {
+                    outline: none;
+                    border-color: #3182ce;
+                    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
+                }
+
+                .appointment-submit-button:hover {
+                    background-color: #2c5282;
+                }
+                `}
+            </style>
+
             <Seo
                 title="Prendre Rendez-vous - Centre de Radiologie"
                 description="Prenez rendez-vous en ligne avec nos spécialistes en radiologie. Formulaire simple et sécurisé pour planifier votre examen."
@@ -230,23 +253,24 @@ const AppointmentPage = () => {
 
             <div style={{ overflow: 'hidden' }}>
                 {/* Section Prendre Rendez-vous */}
-                <section style={getResponsiveStyle(styles.section)}>
-                    <div style={styles.container}>
-                        <div style={getResponsiveStyle(styles.grid)}>
+                <section className="appointment-section" style={styles.section}>
+                    <div className="appointment-container" style={styles.container}>
+                        <div className="appointment-grid">
                             {/* Formulaire de RDV */}
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5 }}
                                 viewport={{ once: true, margin: '-100px' }}
-                                style={getResponsiveStyle(styles.card)}
+                                className="appointment-card"
+                                style={styles.card}
                             >
-                                <h3 style={getResponsiveStyle(styles.cardTitle)}>
+                                <h3 className="appointment-card-title" style={styles.cardTitle}>
                                     <FaCalendarAlt style={styles.cardIcon} />
                                     Formulaire de rendez-vous
                                 </h3>
 
-                                <div style={getResponsiveStyle(styles.infoBox)}>
+                                <div style={styles.infoBox}>
                                     <FaInfoCircle style={styles.infoIcon} />
                                     <div>
                                         <p style={{ margin: 0, fontWeight: '600', color: '#2d3748' }}>Informations importantes</p>
@@ -257,38 +281,42 @@ const AppointmentPage = () => {
                                 </div>
 
                                 <form>
-                                    <div style={getResponsiveStyle(styles.formGroup)}>
-                                        <label style={getResponsiveStyle(styles.formLabel)}>Nom complet *</label>
+                                    <div style={styles.formGroup}>
+                                        <label className="appointment-form-label" style={styles.formLabel}>Nom complet *</label>
                                         <input
                                             type="text"
-                                            style={getResponsiveStyle(styles.formControl)}
+                                            className="appointment-form-control"
+                                            style={styles.formControl}
                                             required
                                             aria-required="true"
                                         />
                                     </div>
 
-                                    <div style={getResponsiveStyle(styles.formGroup)}>
-                                        <label style={getResponsiveStyle(styles.formLabel)}>Téléphone *</label>
+                                    <div style={styles.formGroup}>
+                                        <label className="appointment-form-label" style={styles.formLabel}>Téléphone *</label>
                                         <input
                                             type="tel"
-                                            style={getResponsiveStyle(styles.formControl)}
+                                            className="appointment-form-control"
+                                            style={styles.formControl}
                                             required
                                             aria-required="true"
                                         />
                                     </div>
 
-                                    <div style={getResponsiveStyle(styles.formGroup)}>
-                                        <label style={getResponsiveStyle(styles.formLabel)}>Email</label>
+                                    <div style={styles.formGroup}>
+                                        <label className="appointment-form-label" style={styles.formLabel}>Email</label>
                                         <input
                                             type="email"
-                                            style={getResponsiveStyle(styles.formControl)}
+                                            className="appointment-form-control"
+                                            style={styles.formControl}
                                         />
                                     </div>
 
-                                    <div style={getResponsiveStyle(styles.formGroup)}>
-                                        <label style={getResponsiveStyle(styles.formLabel)}>Type d'examen *</label>
+                                    <div style={styles.formGroup}>
+                                        <label className="appointment-form-label" style={styles.formLabel}>Type d'examen *</label>
                                         <select
-                                            style={getResponsiveStyle(styles.formControl, styles.formSelect)}
+                                            className="appointment-form-control"
+                                            style={{ ...styles.formControl, ...styles.formSelect }}
                                             required
                                             aria-required="true"
                                         >
@@ -302,27 +330,30 @@ const AppointmentPage = () => {
                                         </select>
                                     </div>
 
-                                    <div style={getResponsiveStyle(styles.formGroup)}>
-                                        <label style={getResponsiveStyle(styles.formLabel)}>Date souhaitée *</label>
+                                    <div style={styles.formGroup}>
+                                        <label className="appointment-form-label" style={styles.formLabel}>Date souhaitée *</label>
                                         <input
                                             type="date"
-                                            style={getResponsiveStyle(styles.formControl)}
+                                            className="appointment-form-control"
+                                            style={styles.formControl}
                                             required
                                             aria-required="true"
                                         />
                                     </div>
 
-                                    <div style={getResponsiveStyle(styles.formGroup)}>
-                                        <label style={getResponsiveStyle(styles.formLabel)}>Message</label>
+                                    <div style={styles.formGroup}>
+                                        <label className="appointment-form-label" style={styles.formLabel}>Message</label>
                                         <textarea
-                                            style={getResponsiveStyle(styles.formControl, styles.formTextarea)}
+                                            className="appointment-form-control"
+                                            style={{ ...styles.formControl, ...styles.formTextarea }}
                                             placeholder="Précisez vos besoins ou contraintes particulières..."
                                         ></textarea>
                                     </div>
 
                                     <motion.button
                                         type="submit"
-                                        style={getResponsiveStyle(styles.submitButton)}
+                                        className="appointment-submit-button"
+                                        style={styles.submitButton}
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         aria-label="Envoyer la demande de rendez-vous"
@@ -338,32 +369,30 @@ const AppointmentPage = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.5, delay: 0.1 }}
                                 viewport={{ once: true, margin: '-100px' }}
-                                style={getResponsiveStyle(styles.card)}
+                                className="appointment-card"
+                                style={styles.card}
                             >
-                                <h3 style={getResponsiveStyle(styles.cardTitle)}>
+                                <h3 className="appointment-card-title" style={styles.cardTitle}>
                                     <FaPhone style={styles.cardIcon} />
                                     Nous contacter
                                 </h3>
 
-                                <div style={getResponsiveStyle(styles.mb8)}>
+                                <div style={styles.mb8}>
                                     <h4 style={{
                                         fontSize: '1.125rem',
                                         marginBottom: '1rem',
-                                        color: '#2d3748',
-                                        '@media (min-width: 768px)': {
-                                            fontSize: '1.25rem'
-                                        }
+                                        color: '#2d3748'
                                     }}>
                                         Horaires d'ouverture
                                     </h4>
-                                    <div style={getResponsiveStyle(styles.contactItem)}>
+                                    <div className="appointment-contact-item" style={styles.contactItem}>
                                         <FaClock style={styles.contactIcon} />
                                         <div>
                                             <p style={{ margin: 0, fontWeight: '600' }}>Lundi - Vendredi</p>
                                             <p style={{ margin: 0 }}>8h00 - 19h00</p>
                                         </div>
                                     </div>
-                                    <div style={getResponsiveStyle(styles.contactItem)}>
+                                    <div className="appointment-contact-item" style={styles.contactItem}>
                                         <FaClock style={styles.contactIcon} />
                                         <div>
                                             <p style={{ margin: 0, fontWeight: '600' }}>Samedi</p>
@@ -372,30 +401,27 @@ const AppointmentPage = () => {
                                     </div>
                                 </div>
 
-                                <div style={getResponsiveStyle(styles.mb8)}>
+                                <div style={styles.mb8}>
                                     <h4 style={{
                                         fontSize: '1.125rem',
                                         marginBottom: '1rem',
-                                        color: '#2d3748',
-                                        '@media (min-width: 768px)': {
-                                            fontSize: '1.25rem'
-                                        }
+                                        color: '#2d3748'
                                     }}>
                                         Coordonnées
                                     </h4>
-                                    <div style={getResponsiveStyle(styles.contactItem)}>
+                                    <div className="appointment-contact-item" style={styles.contactItem}>
                                         <FaPhone style={styles.contactIcon} />
                                         <a href="tel:+212522881111" style={{ color: 'inherit', textDecoration: 'none' }}>
                                             05 22 88 11 11
                                         </a>
                                     </div>
-                                    <div style={getResponsiveStyle(styles.contactItem)}>
+                                    <div className="appointment-contact-item" style={styles.contactItem}>
                                         <FaPhone style={styles.contactIcon} />
                                         <a href="tel:+212611111111" style={{ color: 'inherit', textDecoration: 'none' }}>
                                             06 11 11 11 11 (Urgences)
                                         </a>
                                     </div>
-                                    <div style={getResponsiveStyle(styles.contactItem)}>
+                                    <div className="appointment-contact-item" style={styles.contactItem}>
                                         <FaPhone style={styles.contactIcon} />
                                         <a href="mailto:contact@radiologie-aboumadi.com" style={{ color: 'inherit', textDecoration: 'none' }}>
                                             contact@radiologie-aboumadi.com
@@ -407,14 +433,11 @@ const AppointmentPage = () => {
                                     <h4 style={{
                                         fontSize: '1.125rem',
                                         marginBottom: '1rem',
-                                        color: '#2d3748',
-                                        '@media (min-width: 768px)': {
-                                            fontSize: '1.25rem'
-                                        }
+                                        color: '#2d3748'
                                     }}>
                                         Adresse
                                     </h4>
-                                    <div style={getResponsiveStyle(styles.contactItem)}>
+                                    <div className="appointment-contact-item" style={styles.contactItem}>
                                         <FaMapMarkerAlt style={styles.contactIcon} />
                                         <div>
                                             <p style={{ margin: 0 }}>Centre de Radiologie Aboumadi</p>
@@ -444,13 +467,13 @@ const AppointmentPage = () => {
                 </section>
 
                 {/* Section Préparation aux examens */}
-                <section style={{
-                    ...getResponsiveStyle(styles.section),
+                <section className="appointment-section" style={{
+                    ...styles.section,
                     backgroundColor: '#f7fafc',
                     borderTop: '1px solid #e2e8f0',
                     borderBottom: '1px solid #e2e8f0'
                 }}>
-                    <div style={styles.container}>
+                    <div className="appointment-container" style={styles.container}>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -458,14 +481,14 @@ const AppointmentPage = () => {
                             viewport={{ once: true, margin: '-100px' }}
                             style={{ ...styles.textCenter, ...styles.mb8 }}
                         >
-                            <h2 style={getResponsiveStyle(styles.sectionTitle)}>Préparation aux examens</h2>
-                            <div style={styles.divider}></div>
-                            <p style={getResponsiveStyle(styles.sectionSubtitle)}>
+                            <h2 className="appointment-section-title" style={styles.sectionTitle}>Préparation aux examens</h2>
+                            <div className="appointment-divider" style={styles.divider}></div>
+                            <p className="appointment-section-subtitle" style={styles.sectionSubtitle}>
                                 Informations importantes pour bien préparer votre examen
                             </p>
                         </motion.div>
 
-                        <div style={getResponsiveStyle(styles.preparationGrid)}>
+                        <div className="appointment-preparation-grid" style={styles.preparationGrid}>
                             {[
                                 {
                                     title: "IRM",
@@ -490,24 +513,19 @@ const AppointmentPage = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                     viewport={{ once: true, margin: '-50px' }}
-                                    style={getResponsiveStyle(styles.card)}
+                                    className="appointment-card"
+                                    style={styles.card}
                                 >
-                                    <h3 style={{
-                                        ...getResponsiveStyle(styles.cardTitle),
-                                        fontSize: '1.25rem',
-                                        '@media (min-width: 768px)': {
-                                            fontSize: '1.375rem'
-                                        }
+                                    <h3 className="appointment-card-title" style={{
+                                        ...styles.cardTitle,
+                                        fontSize: '1.25rem'
                                     }}>
                                         {item.title}
                                     </h3>
                                     <p style={{
                                         fontSize: '0.875rem',
                                         color: '#4a5568',
-                                        lineHeight: '1.6',
-                                        '@media (min-width: 768px)': {
-                                            fontSize: '1rem'
-                                        }
+                                        lineHeight: '1.6'
                                     }}>
                                         {item.content}
                                     </p>
