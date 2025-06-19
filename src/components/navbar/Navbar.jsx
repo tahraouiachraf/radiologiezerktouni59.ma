@@ -10,20 +10,12 @@ const Navbar = () => {
     const location = useLocation();
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 992);
-        };
-
-        // Initial check on component mount
+        const handleScroll = () => setScrolled(window.scrollY > 50);
+        const handleResize = () => setIsMobile(window.innerWidth < 992);
         handleResize();
 
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
@@ -45,17 +37,15 @@ const Navbar = () => {
         <>
             <style jsx global>{`
                 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-                
+
                 :root {
                     --primary-color: #3490dc;
                     --white: #fff;
-                    --text-color: #444;
-                    --dark-color: #222;
+                    --text-color: #222;
+                    --dark-color: #111;
                     --transition: all 0.3s ease;
                 }
-            `}</style>
 
-            <style jsx>{`
                 body {
                     font-family: 'Poppins', sans-serif;
                     line-height: 1.6;
@@ -67,7 +57,6 @@ const Navbar = () => {
                     padding: 0 20px;
                 }
 
-                /* Top Bar */
                 .top-bar {
                     background-color: var(--primary-color);
                     color: var(--white);
@@ -93,7 +82,6 @@ const Navbar = () => {
                     font-size: 0.9rem;
                 }
 
-                /* Main Header */
                 .main-header {
                     position: fixed;
                     top: 40px;
@@ -179,7 +167,6 @@ const Navbar = () => {
                     padding: 5px;
                 }
 
-                /* Active link */
                 .nav-links a.active {
                     color: var(--primary-color);
                     font-weight: 600;
@@ -189,7 +176,12 @@ const Navbar = () => {
                     width: 100%;
                 }
 
-                /* Responsive */
+                a:focus,
+                button:focus {
+                    outline: 2px dashed var(--primary-color);
+                    outline-offset: 2px;
+                }
+
                 @media (max-width: 992px) {
                     .top-bar {
                         display: none;
@@ -245,7 +237,7 @@ const Navbar = () => {
                 }
             `}</style>
 
-            {/* Top Bar - Always visible except on mobile */}
+            {/* Top Bar */}
             <div className="top-bar" style={{ display: isMobile ? 'none' : 'block' }}>
                 <div className="container">
                     <div className="top-bar-content">
@@ -255,7 +247,7 @@ const Navbar = () => {
                         </div>
                         <div className="top-bar-item">
                             <FaMapMarkerAlt className="top-bar-icon" />
-                            <span>59 Bd Zerktouni, Casablanca</span>
+                            <span>Résidence les fleurs, 59 Bd Mohammed Zerktouni, Casablanca</span>
                         </div>
                         <div className="top-bar-item">
                             <FaClock className="top-bar-icon" />
@@ -275,12 +267,12 @@ const Navbar = () => {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Link to="/">
+                            <Link to="/" title="Page d’accueil">
                                 <h1>Radiologie<span> Zerktouni 59</span></h1>
                             </Link>
                         </motion.div>
 
-                        <nav className={`nav-links ${isOpen ? 'open' : ''}`}>
+                        <nav className={`nav-links ${isOpen ? 'open' : ''}`} role="navigation" aria-label="Menu principal">
                             <ul>
                                 {navLinks.map((link, index) => (
                                     <motion.li
@@ -293,6 +285,7 @@ const Navbar = () => {
                                             to={link.path}
                                             onClick={() => setIsOpen(false)}
                                             className={location.pathname === link.path ? 'active' : ''}
+                                            title={`Page ${link.name}`}
                                         >
                                             {link.name}
                                         </Link>
@@ -301,7 +294,11 @@ const Navbar = () => {
                             </ul>
                         </nav>
 
-                        <button className="mobile-menu-btn" onClick={toggleMenu}>
+                        <button
+                            className="mobile-menu-btn"
+                            onClick={toggleMenu}
+                            aria-label={isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation'}
+                        >
                             {isOpen ? <FaTimes /> : <FaBars />}
                         </button>
                     </div>
