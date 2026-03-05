@@ -329,8 +329,8 @@ const Contact = () => {
                                 </div>
                                 <div className="appointment-contact-item" style={styles.contactItem}>
                                     <FaPhone style={styles.contactIcon} />
-                                    <a href="mailto:contact@radiologie-aboumadi.com" style={{ color: 'inherit', textDecoration: 'none' }}>
-                                        contact@radiologie-aboumadi.com
+                                    <a href="mailto:centre.zerktouni59@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                        centre.zerktouni59@gmail.com
                                     </a>
                                 </div>
                             </div>
@@ -346,8 +346,8 @@ const Contact = () => {
                                 <div className="appointment-contact-item" style={styles.contactItem}>
                                     <FaMapMarkerAlt style={styles.contactIcon} />
                                     <div>
-                                        <p style={{ margin: 0 }}>Centre de Radiologie Aboumadi</p>
-                                        <p style={{ margin: '0.25rem 0 0 0' }}>123 Avenue des Cliniques</p>
+                                        <p style={{ margin: 0 }}>Radiologie Zerktouni 59</p>
+                                        <p style={{ margin: '0.25rem 0 0 0' }}>Résidence les fleurs, 59 Bd Mohammed Zerktouni</p>
                                         <p style={{ margin: '0.25rem 0 0 0' }}>Casablanca, Maroc</p>
                                         <a
                                             href="https://maps.google.com"
