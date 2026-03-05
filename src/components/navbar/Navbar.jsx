@@ -26,7 +26,7 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'À propos', path: '/about' },
-        { name: 'Départements', path: '/departments' },
+        // { name: 'Départements', path: '/departments' },
         { name: 'Nos Docteurs', path: '/doctors' },
         { name: 'Services', path: '/services' },
         { name: 'Rendez-vous', path: '/appointment' },

@@ -296,27 +296,21 @@ const HomePage = () => {
                             {[
                                 {
                                     title: "Radiologie Numérique",
-                                    items: ["Radiologie thoracique", "Radiologie ostéo-articulaire", "Radiologie digestive"]
                                 },
                                 {
                                     title: "Échographie",
-                                    items: ["Échographie abdominale", "Échographie pelvienne", "Échographie thyroïdienne", "Échographie mammaire"]
                                 },
                                 {
                                     title: "IRM",
-                                    items: ["IRM cérébrale", "IRM rachidienne", "IRM articulaire", "IRM abdominale"]
                                 },
                                 {
                                     title: "Scanner",
-                                    items: ["Scanner cérébral", "Scanner thoracique", "Scanner abdominal", "Scanner ostéo-articulaire"]
                                 },
                                 {
                                     title: "Mammographie",
-                                    items: ["Dépistage du cancer du sein", "Mammographie diagnostique", "Échographie mammaire complémentaire"]
                                 },
                                 {
                                     title: "Ostéodensitométrie",
-                                    items: ["Évaluation de la densité osseuse", "Diagnostic d'ostéoporose", "Suivi thérapeutique"]
                                 }
                             ].map((service, index) => (
                                 <motion.div
@@ -329,14 +323,6 @@ const HomePage = () => {
                                     whileHover={{ boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}
                                 >
                                     <h3 style={styles.serviceTitle}>{service.title}</h3>
-                                    <ul style={styles.serviceList}>
-                                        {service.items.map((item, i) => (
-                                            <li key={i} style={styles.serviceListItem}>
-                                                <span style={styles.serviceListBullet}>•</span>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
                                 </motion.div>
                             ))}
                         </div>
